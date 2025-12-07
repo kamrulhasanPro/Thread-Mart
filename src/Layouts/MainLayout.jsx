@@ -10,7 +10,7 @@ const MainLayout = () => {
       </header>
 
       {/* main */}
-      <main className="max-w-11/12 mx-auto">
+      <main className="min-h-[calc(100vh-80px)] max-w-11/12 mx-auto ">
         <Outlet />
       </main>
 
