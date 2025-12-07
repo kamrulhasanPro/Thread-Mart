@@ -1,2 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: dark --default;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.robotoFont {
+  font-family: "Roboto", sans-serif;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary: #32e6e2;
+  --color-primary-content: #12181f;
+  --color-secondary: #014847;
+  --color-secondary-content: #ffffff;
+}
+
+/* e6ecf2 */
+
+.rounded_btn{
+    @apply btn btn-primary rounded-full text-[1rem] text-secondary
+}
+.rounded_btn_outline{
+    @apply btn btn-primary btn-outline text-secondary-content rounded-full text-[1rem] hover:text-secondary
+}
