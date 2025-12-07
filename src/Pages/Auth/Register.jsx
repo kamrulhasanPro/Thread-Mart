@@ -3,18 +3,47 @@ import MyContainer from "../../Components/MyContainer";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../Hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const { registerUser, signOutUser } = useAuth();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  // create user
   const handleRegister = (data) => {
     console.log(data);
+    registerUser(data.email, data.password)
+      .then((res) => {
+        if (res.user) {
+          updateProfile(res.user, {
+            displayName: data.name,
+            photoURL: data.photoURL,
+          }).then(() => {
+            signOutUser();
+            reset();
+            toast.success("Register Success. Please Login");
+            navigate("/login");
+          });
+        }
+      })
+      .catch((err) => toast.error(err.code));
+  };
+
+  const checkValidation = `input validator bg-black/50 w-full outline-offset-0`;
+
+  const validationMassage = (message) => {
+    return <div className="text-[#ff637d] text-sm mt-1">{message}</div>;
   };
 
   return (
@@ -27,21 +56,28 @@ const Register = () => {
         >
           {/* name */}
           <div>
-            <label className="input validator bg-black/50 w-full outline-offset-0">
+            <label
+              className={`${checkValidation}  ${
+                errors.name && "outline-red-400 border-red-400"
+              }`}
+            >
               <FaUser fill="gray" />
               <input
                 type="text"
                 placeholder="Name"
-                {...register("name", { required: true })}
-                required
+                {...register("name", { required: "Name is required" })}
               />
             </label>
-            <div className="validator-hint hidden">Name Is Required</div>
+            {errors.name && validationMassage(errors.name.message)}
           </div>
 
           {/* email */}
           <div>
-            <label className="input validator bg-black/50 w-full outline-offset-0">
+            <label
+              className={`${checkValidation} ${
+                errors.email && "outline-red-400 border-red-400"
+              }`}
+            >
               <svg
                 className="h-[1em] opacity-50"
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,41 +97,44 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="mail@site.com"
-                required
-                {...register("email")}
+                {...register("email", { required: "Enter valid email" })}
               />
             </label>
-            <div className="validator-hint hidden">
-              Enter valid email address
-            </div>
+            {errors.email && validationMassage(errors.email.message)}
           </div>
 
           {/* photo url */}
           <div>
-            <label className="input validator bg-black/50 w-full outline-offset-0">
+            <label
+              className={`${checkValidation} ${
+                errors.photoURL && "outline-red-400 border-red-400"
+              }`}
+            >
               <MdOutlineInsertPhoto fill="gray" />
 
               <input
                 type="url"
                 placeholder="https//:phtourl...."
-                required
-                {...register("photoURL")}
+                {...register("photoURL", { required: "photo url is required" })}
               />
             </label>
-            <div className="validator-hint hidden">Enter valid photo URL</div>
+            {errors.photoURL && validationMassage(errors.photoURL.message)}
           </div>
 
           {/* role */}
           <div>
-            <label className="input validator bg-black/50 w-full outline-offset-0">
+            <label
+              className={`${checkValidation} ${
+                errors.role && "outline-red-400 border-red-400"
+              }`}
+            >
               <MdAdminPanelSettings fill="gray" />
 
               <select
                 defaultValue=""
                 className="bg-transparent select px-0 border-none w-full outline-none appearance-none [&>*]:bg-primary-content
     [&>*]:text-white focus-visible:px-2"
-                required
-                {...register("role")}
+                {...register("role", { required: "Select a role" })}
               >
                 <option disabled value="">
                   Pick a role
@@ -104,18 +143,22 @@ const Register = () => {
                 <option>Buyer</option>
               </select>
             </label>
-            <div className="validator-hint hidden">Select a role</div>
+            {errors.role && validationMassage(errors.role.message)}
           </div>
 
           {/*  password */}
           <div>
-            <label className={`input validator bg-black/50 w-full outline-offset-0 ${errors.password && 'outline-red-400 border-red-400'}`}>
+            <label
+              className={`${checkValidation} ${
+                errors.password && "outline-red-400 border-red-400"
+              }`}
+            >
               <IoKeyOutline fill="gray" />
 
               <input
                 type="password"
                 placeholder="********"
-                required
+                // required
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
@@ -128,12 +171,11 @@ const Register = () => {
                       "Password must contain at least one uppercase and one lowercase letter",
                   },
                 })}
-                minLength={6}
+                // minLength={6}
               />
             </label>
-            <div className="text-[#ff637d] text-sm mt-1">
-              {errors.password && errors.password.message}
-            </div>
+
+            {errors.password && validationMassage(errors.password.message)}
           </div>
 
           <button className="btn btn-primary w-full">Register</button>

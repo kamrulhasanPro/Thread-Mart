@@ -3,31 +3,53 @@ import MyContainer from "../../Components/MyContainer";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { loginUser } = useAuth();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  // login user
   const handleRegister = (data) => {
     console.log(data);
+    loginUser(data.email, data.password)
+      .then((res) => {
+        if (res.user) {
+          reset();
+          toast.success("Login Successful");
+          navigate("/");
+        }
+      })
+      .catch((err) => toast.error(err.code));
   };
+
+  const checkValidation = `input validator bg-black/50 w-full outline-offset-0`;
 
   return (
     <MyContainer className={"min-h-[calc(100vh-80px)] flex items-center"}>
       <div className="bg-primary/10 max-w-md w-full  mx-auto p-5 rounded-2xl ">
-        <h4 className="text-4xl">Lig In </h4>
+        <h4 className="text-4xl">LogIn </h4>
         <form
           onSubmit={handleSubmit(handleRegister)}
           className="mt-8 space-y-2"
         >
           {/* email */}
           <div>
-            <label className="input validator bg-black/50 w-full outline-offset-0">
+            <label
+              className={`${checkValidation} ${
+                errors.email && "outline-red-400 border-red-400"
+              }`}
+            >
               <svg
                 className="h-[1em] opacity-50"
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,24 +69,28 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="mail@site.com"
-                required
-                {...register("email")}
+                {...register("email", { required: "email is required" })}
               />
             </label>
-            <div className="validator-hint hidden">
-              Enter valid email address
-            </div>
+            {errors.email && (
+              <div className="text-[#ff637d] text-sm mt-1">
+                {errors.email.message}
+              </div>
+            )}
           </div>
 
           {/*  password */}
           <div>
-            <label className={`input validator bg-black/50 w-full outline-offset-0 ${errors.password && 'outline-red-400 border-red-400'}`}>
+            <label
+              className={`${checkValidation} ${
+                errors.password && "outline-red-400 border-red-400"
+              }`}
+            >
               <IoKeyOutline fill="gray" />
 
               <input
                 type="password"
                 placeholder="********"
-                required
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
@@ -77,12 +103,13 @@ const Login = () => {
                       "Password must contain at least one uppercase and one lowercase letter",
                   },
                 })}
-                minLength={6}
               />
             </label>
-            <div className="text-[#ff637d] text-sm mt-1">
-              {errors.password && errors.password.message}
-            </div>
+            {errors.password && (
+              <div className="text-[#ff637d] text-sm mt-1">
+                {errors.password.message}
+              </div>
+            )}
           </div>
 
           <button className="btn btn-primary w-full">Register</button>
