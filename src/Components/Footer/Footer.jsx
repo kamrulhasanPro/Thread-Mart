@@ -4,7 +4,7 @@ import Logo from "../Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-300">
+    <footer className="bg-base-300 rounded-t-2xl">
       <MyContainer className="footer sm:footer-horizontal text-base-content py-10 flex flex-col sm:flex-row">
         <nav className="flex-1">
           <Logo />
