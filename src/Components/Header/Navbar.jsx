@@ -4,6 +4,8 @@ import MyContainer from "../MyContainer";
 import { Link } from "react-router";
 import { useAuth } from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { axiosPublic } from "../../Hooks/axiosPublic";
+import Logo from "../Logo";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
@@ -14,12 +16,16 @@ const Navbar = () => {
       <MyLink to={"/items"}>All Items</MyLink>
       <MyLink to={"/about"}>about</MyLink>
       <MyLink to={"/contact"}>Contact</MyLink>
+      {user && <MyLink to={"/dashboard"}>Dashboard</MyLink>}
     </>
   );
 
   // logout
   const handleLogout = () => {
-    signOutUser().then(() => toast.info("You are logout"));
+    signOutUser().then(() => {
+      axiosPublic.post("/logout").then((res) => console.log(res.data));
+      toast.info("You are logout");
+    });
   };
   return (
     <nav className="bg-base-100 shadow-sm">
@@ -52,7 +58,7 @@ const Navbar = () => {
               {navList}
             </ul>
           </div>
-          <img src="/logo.png" alt="Logo" className="w-20" />
+          <Logo />
         </div>
 
         {/* right side */}
@@ -70,7 +76,7 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={user.photoURL}
                   />
                 </div>
               </div>

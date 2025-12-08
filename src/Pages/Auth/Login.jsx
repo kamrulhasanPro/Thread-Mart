@@ -7,9 +7,11 @@ import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
+import { axiosPublic } from "../../Hooks/axiosPublic";
 
 const Login = () => {
-  const { loginUser } = useAuth();
+  const { loginUser, googleLoginUser } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -24,19 +26,55 @@ const Login = () => {
     console.log(data);
     loginUser(data.email, data.password)
       .then((res) => {
+        // store in db
         if (res.user) {
-          reset();
-          toast.success("Login Successful");
-          navigate("/");
+          axiosPublic.post("/login", data).then((result) => {
+            if (result.data) {
+              console.log(result);
+              reset();
+              toast.success("Login Successfully complete.");
+              navigate("/");
+            }
+          });
         }
       })
       .catch((err) => toast.error(err.code));
   };
 
+  // google login
+  const handleGoogleLogin = () => {
+    googleLoginUser().then(async (res) => {
+      if (res.user) {
+        const user = res.user;
+
+        // add user in db
+        await axiosPublic
+          .post("/register", {
+            email: user?.email,
+            name: user.displayName,
+            photoURL: user.photoURL,
+            role: "buyer",
+          })
+          .then(() => {});
+
+        // track jwt
+        await axiosPublic
+          .post("/login", { email: user?.email })
+          .then((result) => {
+            if (result.data) {
+              console.log(result);
+              toast.success("Login Successfully complete.");
+              navigate("/");
+            }
+          });
+      }
+    });
+  };
+
   const checkValidation = `input validator bg-black/50 w-full outline-offset-0`;
 
   return (
-    <MyContainer className={"min-h-[calc(100vh-80px)] flex items-center"}>
+    <MyContainer className={"min-h-[calc(100vh-80px-275px)] flex items-center"}>
       <div className="bg-primary/10 max-w-md w-full  mx-auto p-5 rounded-2xl ">
         <h4 className="text-4xl">LogIn </h4>
         <form
@@ -114,6 +152,19 @@ const Login = () => {
 
           <button className="btn btn-primary w-full">Register</button>
         </form>
+
+        {/* google login */}
+        <div>
+          <p className="divider">OR</p>
+          {/* Google */}
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline text-white w-full border-[#e5e5e5]"
+          >
+            <FcGoogle size={20} />
+            Login with Google
+          </button>
+        </div>
 
         <div className="text-center mt-5">
           <h3>Don’t have an account yet?</h3>

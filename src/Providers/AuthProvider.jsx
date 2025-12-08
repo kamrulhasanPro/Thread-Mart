@@ -13,6 +13,7 @@ import {
 const AuthProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [user, setUser] = useState(null);
+  const googleProvider = new GoogleAuthProvider();
   console.log("Current user is ->", user?.email);
 
   // register user
@@ -30,7 +31,7 @@ const AuthProvider = ({ children }) => {
   // google login
   const googleLoginUser = () => {
     setLoader(true);
-    return signInWithPopup(auth, GoogleAuthProvider());
+    return signInWithPopup(auth, googleProvider);
   };
 
   // sign out
