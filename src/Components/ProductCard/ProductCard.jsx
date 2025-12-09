@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductCard = () => {
   return (
-    <div className="bg-[#0f172a]/50 backdrop-blur-md text-secondary-content hover:-translate-y-1 border-1 border-transparent hover:border-primary/20 duration-300 rounded-sm">
+    <div className="bg-[#0f172a]/50 backdrop-blur-md text-secondary-content hover:-translate-y-1 border-2 border-transparent hover:border-primary/20 duration-300 rounded-t-2xl">
       <figure className="p-4 flex items-center justify-center">
         <img
           src="https://i.postimg.cc/GhKHnzSB/High_Speed_Racing_Rechargeable_Remote_Co_Non_Brand_9ccd0_360012.png"

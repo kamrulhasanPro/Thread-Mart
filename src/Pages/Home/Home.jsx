@@ -3,6 +3,8 @@ import Hero from "./Sections/Hero";
 import OurProducts from "./Sections/OurProducts";
 import HowItWorks from "./Sections/HowItWorks";
 import CustomerFeedback from "./Sections/CustomerFeedback";
+import OurTrustedBrands from "./Sections/OurTrustedBrands";
+import NewsLetter from "./Sections/Newsletter";
 
 const Home = () => {
   return (
@@ -10,7 +12,9 @@ const Home = () => {
       <Hero />
       <OurProducts />
       <HowItWorks />
-      <CustomerFeedback/>
+      <CustomerFeedback />
+      <OurTrustedBrands />
+      <NewsLetter />
     </>
   );
 };
