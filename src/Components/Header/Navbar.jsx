@@ -28,7 +28,7 @@ const Navbar = () => {
     });
   };
   return (
-    <nav className="bg-base-100 shadow-sm">
+    <nav className="bg-base-100/80 backdrop-blur-lg shadow-sm ">
       <MyContainer className="navbar justify-between">
         {/* left side */}
         <div className="navbar-start">
