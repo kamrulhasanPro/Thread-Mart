@@ -3,8 +3,8 @@ import HeadTitle from "../../../Components/HeadTitle";
 
 const NewsLetter = () => {
   return (
-    <section className="px-6 py-16 bg-[#0f172a] mt-16 rounded-2xl text-center">
-      <h2 className="text-3xl md:text-5xl font-semibold text-primary mb-2">
+    <section className="px-6 py-16 bg-primary/10 mt-16 rounded-2xl text-center">
+      <h2 className="text-3xl md:text-5xl font-semibold text-white mb-2">
         Subscribe to Our Newsletter
       </h2>
 

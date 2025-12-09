@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyLink from "../MyLink";
 import MyContainer from "../MyContainer";
 import { Link } from "react-router";
@@ -9,7 +9,7 @@ import Logo from "../Logo";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
-
+  const [scrollY, setScrolled] = useState(false);
   const navList = (
     <>
       <MyLink to={"/"}>Home</MyLink>
@@ -27,8 +27,26 @@ const Navbar = () => {
       toast.info("You are logout");
     });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-base-100/80 backdrop-blur-lg shadow-sm ">
+    <nav
+      className={`${
+        scrollY ? "bg-secondary/80" : "bg-transparent"
+      } backdrop-blur-lg shadow-sm `}
+    >
       <MyContainer className="navbar justify-between">
         {/* left side */}
         <div className="navbar-start">
