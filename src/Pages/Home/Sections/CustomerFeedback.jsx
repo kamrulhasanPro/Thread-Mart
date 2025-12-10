@@ -90,7 +90,7 @@ const CustomerFeedback = () => {
         >
           {testimonials.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="bg-[#0f172a] text-white p-4 rounded-3xl shadow-xl border border-secondary  text-center hover:shadow-primary hover:shadow-lg transition duration-300">
+              <div className="bg-secondary text-white p-6 rounded-3xl shadow-xl border border-secondary text-center transition duration-500  hover:shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_25px_rgba(50,230,226,0.3)] hover:border-primary">
                 <img
                   src={item.image}
                   alt={item.name}

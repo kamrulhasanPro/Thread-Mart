@@ -13,8 +13,8 @@ const Navbar = () => {
   const navList = (
     <>
       <MyLink to={"/"}>Home</MyLink>
-      <MyLink to={"/items"}>All Items</MyLink>
-      <MyLink to={"/about"}>about</MyLink>
+      <MyLink to={"/all-products"}>All Items</MyLink>
+      <MyLink to={"/about-us"}>About Us</MyLink>
       <MyLink to={"/contact"}>Contact</MyLink>
       {user && <MyLink to={"/dashboard"}>Dashboard</MyLink>}
     </>
@@ -28,6 +28,7 @@ const Navbar = () => {
     });
   };
 
+  // scroll header bg color
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
