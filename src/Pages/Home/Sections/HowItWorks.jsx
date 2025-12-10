@@ -11,49 +11,50 @@ import HeadTitle from "../../../Components/HeadTitle";
 
 const HowItWorks = () => {
   const howItWorksData = [
-    {
-      id: 1,
-      title: "Submit Bulk Garment Order",
-      description:
-        "Buyers select products, quantity, and submit their order directly through the platform.",
-      icon: <FaShoppingCart size={80} color="#32e6e2" />,
-    },
-    {
-      id: 2,
-      title: "Production Process Started",
-      description:
-        "Managers receive orders and start production stages: cutting, sewing, and finishing.",
-      icon: <MdFactory size={80} color="#32e6e2" />,
-    },
-    {
-      id: 3,
-      title: "Monitor Quality & Progress",
-      description:
-        "Orders are tracked step-by-step with status updates and quality checks to ensure accuracy.",
-      icon: <MdChecklist size={80} color="#32e6e2" />,
-    },
-    {
-      id: 4,
-      title: "Timely Delivery",
-      description:
-        "Finished garments are packed and shipped, with buyers able to track the delivery in real-time.",
-      icon: <MdLocalShipping size={80} color="#32e6e2" />,
-    },
-    {
-      id: 5,
-      title: "Invoice & Secure Payment",
-      description:
-        "Buyers receive automated invoices and complete secure payments through the platform.",
-      icon: <MdPayment size={80} color="#32e6e2" />,
-    },
-    {
-      id: 6,
-      title: "Order History & Reordering",
-      description:
-        "Users can view past orders and quickly reorder with saved product and quantity details.",
-      icon: <MdHistory size={80} color="#32e6e2" />,
-    },
-  ];
+  {
+    id: 1,
+    title: "Submit Bulk Garment Order",
+    description:
+      "Buyers select products, quantity, and submit their order directly through the platform.",
+    icon: <FaShoppingCart size={80} color="#32e6e2" />, // Blue — action
+  },
+  {
+    id: 2,
+    title: "Production Process Started",
+    description:
+      "Managers receive orders and start production stages: cutting, sewing, and finishing.",
+    icon: <MdFactory size={80} color="#f97316" />, // Orange — factory process
+  },
+  {
+    id: 3,
+    title: "Monitor Quality & Progress",
+    description:
+      "Orders are tracked step-by-step with status updates and quality checks to ensure accuracy.",
+    icon: <MdChecklist size={80} color="#22c55e" />, // Green — quality check
+  },
+  {
+    id: 4,
+    title: "Timely Delivery",
+    description:
+      "Finished garments are packed and shipped, with buyers able to track the delivery in real-time.",
+    icon: <MdLocalShipping size={80} color="#6366f1" />, // Indigo — shipping
+  },
+  {
+    id: 5,
+    title: "Invoice & Secure Payment",
+    description:
+      "Buyers receive automated invoices and complete secure payments through the platform.",
+    icon: <MdPayment size={80} color="#facc15" />, // Yellow — payment
+  },
+  {
+    id: 6,
+    title: "Order History & Reordering",
+    description:
+      "Users can view past orders and quickly reorder with saved product and quantity details.",
+    icon: <MdHistory size={80} color="#a855f7" />, // Purple — history
+  },
+];
+
   return (
     <section className="space-y-7 ">
       {/* <div className="">

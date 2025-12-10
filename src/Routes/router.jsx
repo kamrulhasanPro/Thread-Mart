@@ -7,6 +7,7 @@ import Login from "../Pages/Auth/Login";
 import AllProduct from "../Pages/All Items/AllProducts";
 import AllProducts from "../Pages/All Items/AllProducts";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Contact from "../Pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "about-us",
         Component: AboutUs,
+      },
+      {
+        path: "contact",
+        Component: Contact,
       },
     ],
   },
