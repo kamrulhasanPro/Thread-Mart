@@ -30,7 +30,14 @@ const Register = () => {
             displayName: data.name,
             photoURL: data.photoURL,
           }).then(() => {
-            lo
+            axiosPublic.post("/register", data).then(async (res) => {
+              if (res.data.insertedId) {
+                await signOutUser();
+                toast.success("Register Success. Please Login");
+                reset();
+                navigate("/login");
+              }
+            });
           });
         }
       })

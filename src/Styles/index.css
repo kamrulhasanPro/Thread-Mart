@@ -32,14 +32,16 @@
 }
 
 body {
-  background:
-    linear-gradient(120deg, rgba(50,230,226,0.18), transparent 60%),
-    linear-gradient(240deg, rgba(50,230,226,0.12), transparent 60%),
-    #020617;
+  background: linear-gradient(120deg, rgba(50, 230, 226, 0.18), transparent 60%),
+    linear-gradient(240deg, rgba(50, 230, 226, 0.12), transparent 60%), #020617;
   background-attachment: fixed;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #06c2bf !important; 
+  color: #06c2bf !important;
+}
+
+.boxStyle {
+  @apply bg-primary/10 p-4 shadow-md border rounded-lg border-primary/50 space-y-3;
 }

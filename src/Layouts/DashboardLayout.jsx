@@ -9,12 +9,13 @@ import { CgProfile } from "react-icons/cg";
 import { LuLogOut } from "react-icons/lu";
 import { Outlet, useNavigate } from "react-router";
 import Logo from "../Components/Logo";
+import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
 
 const DashboardLayout = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dashboardItemsLink = (
     <>
-      <li onClick={() => navigate('/')}>
+      <li onClick={() => navigate("/")}>
         <Logo />
       </li>
 
@@ -53,7 +54,11 @@ const DashboardLayout = () => {
   return (
     <section>
       <div className="drawer lg:drawer-open">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <input
+          id="my-drawer-4"
+          type="checkbox"
+          className="peer drawer-toggle"
+        />
         <div className="drawer-content">
           {/* Navbar */}
           <nav className="md:hidden navbar w-full bg-base-300">
@@ -92,7 +97,7 @@ const DashboardLayout = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+          <div className="flex min-h-full flex-col items-start bg-secondary is-drawer-close:w-14 is-drawer-open:w-64">
             {/* Sidebar content here */}
             <div className="menu w-full grow flex flex-col justify-between">
               {/* List item */}
@@ -115,6 +120,15 @@ const DashboardLayout = () => {
                       {"Logout"}
                     </span>
                   </button>
+                </li>
+                <li>
+                  <label
+                    htmlFor="my-drawer-4"
+                    className="flex is-drawer-open:justify-end"
+                  >
+                    {/* Sidebar toggle icon */}
+                    <TbLayoutSidebarRightCollapseFilled />
+                  </label>
                 </li>
               </ul>
             </div>

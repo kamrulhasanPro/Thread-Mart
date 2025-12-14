@@ -14,6 +14,9 @@ import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import ManagerHome from "../Pages/Dashboard/Manager/MenagerHome";
 import AddProduct from "../Pages/Dashboard/Manager/AddProduct";
+import ManageProducts from "../Pages/Dashboard/Manager/ManageProducts";
+import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
+import ApproveOrder from "../Pages/Dashboard/Manager/ApproveOrder";
 
 export const router = createBrowserRouter([
   {
@@ -66,13 +69,25 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: ManagerHome
+        Component: ManagerHome,
       },
       {
-        path: 'add-product',
-        Component: AddProduct
-      }
-    ]
+        path: "add-product",
+        Component: AddProduct,
+      },
+      {
+        path: "manage-products",
+        Component: ManageProducts,
+      },
+      {
+        path: "pending-order",
+        Component: PendingOrder,
+      },
+      {
+        path: "approve-order",
+        Component: ApproveOrder,
+      },
+    ],
   },
   {
     path: "*",

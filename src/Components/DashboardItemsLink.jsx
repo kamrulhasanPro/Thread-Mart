@@ -1,12 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 const DashboardItemsLink = ({ icon, navName, to, className }) => {
+  const location = useLocation();
+  const end = location.pathname === "/dashboard" ? false : true;
   const defaultStyle = `is-drawer-close:tooltip is-drawer-close:tooltip-right text-lg text-secondary-content hover:text-primary transition ${className}`;
   return (
     <li>
       <NavLink
         to={to}
+        end={end}
         className={({ isActive }) =>
           isActive
             ? `text-semibold !text-primary ${defaultStyle}`
