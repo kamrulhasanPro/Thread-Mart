@@ -25,10 +25,10 @@ const Login = () => {
   const handleRegister = (data) => {
     console.log(data);
     loginUser(data.email, data.password)
-      .then((res) => {
+      .then(async (res) => {
         // store in db
         if (res.user) {
-          axiosPublic.post("/login", data).then((result) => {
+          await axiosPublic.post("/login", data).then((result) => {
             if (result.data) {
               console.log(result);
               reset();

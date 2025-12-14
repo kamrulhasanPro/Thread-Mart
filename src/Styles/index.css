@@ -38,3 +38,8 @@ body {
     #020617;
   background-attachment: fixed;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #06c2bf !important; 
+}
