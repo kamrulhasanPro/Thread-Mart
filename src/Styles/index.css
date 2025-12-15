@@ -45,3 +45,13 @@ body {
 .boxStyle {
   @apply bg-primary/10 p-4 shadow-md border rounded-lg border-primary/50 space-y-3;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
