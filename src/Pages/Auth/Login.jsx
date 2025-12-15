@@ -3,7 +3,7 @@ import MyContainer from "../../Components/MyContainer";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ import { axiosPublic } from "../../Hooks/axiosPublic";
 const Login = () => {
   const { loginUser, googleLoginUser } = useAuth();
   const navigate = useNavigate();
+  const from = useLocation().state;
 
   const {
     register,
@@ -33,7 +34,7 @@ const Login = () => {
               console.log(result);
               reset();
               toast.success("Login Successfully complete.");
-              navigate("/");
+              navigate(from || "/");
             }
           });
         }
@@ -64,7 +65,7 @@ const Login = () => {
             if (result.data) {
               console.log(result);
               toast.success("Login Successfully complete.");
-              navigate("/");
+              navigate(from || "/");
             }
           });
       }

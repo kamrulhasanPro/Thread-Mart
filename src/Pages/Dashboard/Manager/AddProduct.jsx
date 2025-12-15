@@ -7,6 +7,7 @@ import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading";
+import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -88,7 +89,7 @@ const AddProduct = () => {
   return (
     <section>
       <div className="text-white">
-        <HeadTitle className={"!mt-0"}>Add Product</HeadTitle>
+        <DashboardTitle>Add Product</DashboardTitle>
 
         <form onSubmit={handleSubmit(handlePostProduct)}>
           {/* parent */}

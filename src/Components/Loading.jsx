@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 
-export default function Loading() {
+export default function Loading({ className }) {
   const dots = Array(5).fill(0);
 
   return (
-    <div className="flex gap-2 items-center justify-center h-full">
+    <div
+      className={`flex gap-2 items-center justify-center h-full ${className}`}
+    >
       {dots.map((_, i) => (
         <motion.div
           key={i}

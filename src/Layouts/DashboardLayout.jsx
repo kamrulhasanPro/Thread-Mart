@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardItemsLink from "../Components/DashboardItemsLink";
+import DashboardItemsLink from "../Components/Dashboard/DashboardItemsLink";
 import { TiHome } from "react-icons/ti";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { MdOutlinePendingActions } from "react-icons/md";
@@ -10,8 +10,12 @@ import { LuLogOut } from "react-icons/lu";
 import { Outlet, useNavigate } from "react-router";
 import Logo from "../Components/Logo";
 import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
+import { useAuth } from "../Hooks/useAuth";
+import { toast } from "react-toastify";
+import { axiosPublic } from "../Hooks/axiosPublic";
 
 const DashboardLayout = () => {
+  const { signOutUser } = useAuth();
   const navigate = useNavigate();
   const dashboardItemsLink = (
     <>
@@ -51,6 +55,13 @@ const DashboardLayout = () => {
     </>
   );
 
+  // logout
+  const handleLogout = () => {
+    signOutUser().then(() => {
+      axiosPublic.post("/logout").then((res) => console.log(res.data));
+      toast.info("You are logout");
+    });
+  };
   return (
     <section>
       <div className="drawer lg:drawer-open">
@@ -110,8 +121,11 @@ const DashboardLayout = () => {
                   navName={"Profile"}
                   icon={<CgProfile />}
                 />
+
+                {/* logout */}
                 <li>
                   <button
+                    onClick={handleLogout}
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right text-lg text-red-400"
                     data-tip={"Logout"}
                   >
@@ -121,6 +135,8 @@ const DashboardLayout = () => {
                     </span>
                   </button>
                 </li>
+
+                {/* toggle sidebar */}
                 <li>
                   <label
                     htmlFor="my-drawer-4"

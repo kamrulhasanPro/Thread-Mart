@@ -87,6 +87,10 @@ export const router = createBrowserRouter([
         path: "approve-order",
         Component: ApproveOrder,
       },
+      {
+        path: "",
+        Component: ApproveOrder,
+      },
     ],
   },
   {

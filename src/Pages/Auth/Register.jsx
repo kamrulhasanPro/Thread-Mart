@@ -143,8 +143,8 @@ const Register = () => {
                 <option disabled value="">
                   Pick a role
                 </option>
-                <option>Meager</option>
-                <option>Buyer</option>
+                <option value={"buyer"}>Buyer</option>
+                <option value={"manager"}>Manager</option>
               </select>
             </label>
             {errors.role && validationMassage(errors.role.message)}

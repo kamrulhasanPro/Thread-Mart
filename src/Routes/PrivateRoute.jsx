@@ -1,12 +1,13 @@
 import React from "react";
 import { useAuth } from "../Hooks/useAuth";
 import Loading from "../Components/Loading";
-import { Navigate } from "react-router";
+import { Navigate, useLocation } from "react-router";
 
 const PrivateRoute = ({ children }) => {
   const { user, loader } = useAuth();
-  if (loader) return <Loading />;
-  if (!user) return <Navigate to={"/login"} />;
+  const location = useLocation().pathname;
+  if (loader) return <Loading className={"!min-h-screen"} />;
+  if (!user) return <Navigate to={"/login"} state={location} />;
   return children;
 };
 
