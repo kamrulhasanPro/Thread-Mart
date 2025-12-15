@@ -17,6 +17,7 @@ import AddProduct from "../Pages/Dashboard/Manager/AddProduct";
 import ManageProducts from "../Pages/Dashboard/Manager/ManageProducts";
 import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
 import ApproveOrder from "../Pages/Dashboard/Manager/ApproveOrder";
+import UpdateProduct from "../Pages/Dashboard/Manager/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -88,8 +89,9 @@ export const router = createBrowserRouter([
         Component: ApproveOrder,
       },
       {
-        path: "",
-        Component: ApproveOrder,
+        path: "update-product/:id",
+        loader: ({ params }) => axiosPublic(`/product/${params.id}/specific`),
+        Component: UpdateProduct,
       },
     ],
   },

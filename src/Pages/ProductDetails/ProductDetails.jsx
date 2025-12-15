@@ -48,13 +48,13 @@ const ProductDetails = () => {
               navigation={true}
               thumbs={{ swiper: thumbsSwiper }}
               modules={[FreeMode, Thumbs, Navigation]}
-              className="mainSwiper rounded-lg border-4 border-primary/50"
+              className="mainSwiper rounded-lg border-4 border-primary/50 aspect-square"
             >
               {images.map((img, i) => (
                 <SwiperSlide key={i}>
                   <img
                     src={img}
-                    className="w-full h-full object-cover hover:scale-110 duration-300"
+                    className="w-full h-full object-cover hover:scale-110 duration-300 object-top"
                   />
                 </SwiperSlide>
               ))}

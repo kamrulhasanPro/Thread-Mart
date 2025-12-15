@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
@@ -7,13 +7,11 @@ import Loading from "../../../Components/Loading";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import ConfirmModal from "../../../Components/ConfirmModal";
-import ReuseableModal from "../../../Components/ReuseableModal";
+import { Link } from "react-router";
 
 const ManageProducts = () => {
   const [open, setOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  console.log(selectedProduct);
-  const modalRef = useRef(null);
+  const [selectedId, setSelectedId] = useState(null);
   const { user } = useAuth();
   const {
     data: products = [],
@@ -27,21 +25,17 @@ const ManageProducts = () => {
 
   console.log(products);
 
-  const handleOpenModal = (product) => {
-    setSelectedProduct(product);
+  const handleOpenModal = (id) => {
+    setSelectedId(id);
     setOpen(true);
   };
   const handleDelete = async () => {
-    const deleted = await axiosPublic.delete(
-      `/product/${selectedProduct?._id}/delete`
-    );
+    const deleted = await axiosPublic.delete(`/product/${selectedId}/delete`);
     if (deleted.data.deletedCount) {
       setOpen(false);
       refetch();
     }
   };
-
-  const handleEdit = () => {};
   return (
     <section>
       <div>
@@ -91,21 +85,20 @@ const ManageProducts = () => {
 
                   {/* action */}
                   <td>
-                    <button
-                      onClick={() => {
-                        setSelectedProduct(product);
-                        modalRef.current.showModal();
-                      }}
-                      className="p-1.5 cursor-pointer bg-emerald-400 rounded-full text-lg"
-                    >
-                      <MdEdit />
-                    </button>
-                    <button
-                      onClick={() => handleOpenModal(product)}
-                      className="p-1.5 cursor-pointer bg-red-400 rounded-full text-lg ml-2"
-                    >
-                      <FaTrashAlt />
-                    </button>
+                    <div className="flex items-center justify-start gap-2">
+                      <Link
+                        to={`/dashboard/update-product/${product?._id}`}
+                        className="p-1.5 cursor-pointer bg-emerald-400 rounded-full text-lg inline-block"
+                      >
+                        <MdEdit />
+                      </Link>
+                      <button
+                        onClick={() => handleOpenModal(product._id)}
+                        className="p-1.5 cursor-pointer bg-red-400 rounded-full text-lg"
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -134,10 +127,6 @@ const ManageProducts = () => {
           onCancel={() => setOpen(false)}
         />
       </div>
-      <ReuseableModal modalRef={modalRef}>
-        <p>kamrul Hasan</p>
-        <button onClick={() => modalRef.current.close()}>Close</button>
-      </ReuseableModal>
     </section>
   );
 };
