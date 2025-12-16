@@ -21,6 +21,7 @@ const ManageProducts = () => {
     queryKey: ["my-products", user?.email],
     queryFn: async () =>
       (await axiosPublic(`/manage-product?email=${user?.email}`)).data,
+    enabled: !!user?.email,
   });
 
   console.log(products);

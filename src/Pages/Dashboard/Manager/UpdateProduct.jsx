@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import HeadTitle from "../../../Components/HeadTitle";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useAuth } from "../../../Hooks/useAuth";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
@@ -23,7 +22,6 @@ const UpdateProduct = () => {
     availableQuantity,
     paymentOption,
   } = product;
-  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [filesValue, setFilesValue] = useState([]);
   const [previewImg, setPreviewImag] = useState(images);

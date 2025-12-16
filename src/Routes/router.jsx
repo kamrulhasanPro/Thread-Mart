@@ -18,6 +18,7 @@ import ManageProducts from "../Pages/Dashboard/Manager/ManageProducts";
 import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
 import ApproveOrder from "../Pages/Dashboard/Manager/ApproveOrder";
 import UpdateProduct from "../Pages/Dashboard/Manager/UpdateProduct";
+import OrderForm from "../Pages/ProductDetails/OrderForm";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ProductDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "order-form/:id",
+        loader: ({ params }) => axiosPublic(`/product/${params.id}/specific`),
+        element: (
+          <PrivateRoute>
+            <OrderForm />
           </PrivateRoute>
         ),
       },

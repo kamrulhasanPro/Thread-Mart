@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
@@ -16,7 +16,6 @@ const ProductDetails = () => {
     data: {
       availableQuantity,
       category,
-      demoVideo,
       description,
       images,
       moq,
@@ -121,7 +120,9 @@ const ProductDetails = () => {
               <small className="text-sm text-gray-400">per pice</small>
             </p>
 
-            <button className="btn btn-primary w-full mt-5">Order Now</button>
+            <Link
+            to={`/order-form/${_id}`}
+            className="btn btn-primary w-full mt-5">Order Now</Link>
           </div>
         </div>
       </section>
