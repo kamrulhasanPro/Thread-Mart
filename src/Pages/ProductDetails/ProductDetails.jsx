@@ -25,7 +25,6 @@ const ProductDetails = () => {
       _id,
     },
   } = useLoaderData();
-  console.log(description, images);
 
   const backArrow = (
     <FaArrowCircleLeft
@@ -121,8 +120,11 @@ const ProductDetails = () => {
             </p>
 
             <Link
-            to={`/order-form/${_id}`}
-            className="btn btn-primary w-full mt-5">Order Now</Link>
+              to={`/order-form/${_id}`}
+              className="btn btn-primary w-full mt-5"
+            >
+              Order Now
+            </Link>
           </div>
         </div>
       </section>

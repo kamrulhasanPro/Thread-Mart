@@ -4,6 +4,8 @@ import { useForm, useWatch } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
 import { useLoaderData } from "react-router";
 import Loading from "../../Components/Loading";
+import { axiosPublic } from "../../Hooks/axiosPublic";
+import { toast } from "react-toastify";
 
 const OrderForm = () => {
   const [loading, setLoading] = useState(false);
@@ -19,8 +21,7 @@ const OrderForm = () => {
     reset,
     control,
   } = useForm();
-  console.log(product);
-  const handleOrder = (data) => {
+  const handleOrder = async (data) => {
     const {
       orderQuantity,
       perPrice,
@@ -33,20 +34,18 @@ const OrderForm = () => {
       productName,
       deliveryAddress,
     } = data;
-    data.totalPrice = Number(data?.orderQuantity) * Number(data?.perPrice);
+
+    data.totalPrice = Number(orderQuantity) * Number(perPrice);
     const newOrder = {
       managerEmail: product?.managerEmail,
       productId: product?._id,
       productName,
       productPrice: perPrice,
-
       orderQuantity,
       totalPrice,
-
-      paymentOption, // COD / Stripe / PayFast
-      paymentStatus: "pending", // pending | paid | failed
-      orderStatus: "pending", // pending | confirmed | shipped | delivered | cancelled
-
+      paymentOption,
+      paymentStatus: "pending",
+      orderStatus: "pending",
       customer: {
         firstName,
         lastName,
@@ -54,11 +53,36 @@ const OrderForm = () => {
         phoneNumber,
         deliveryAddress,
       },
-
       notes,
       createdAt: new Date(),
     };
 
+    try {
+      setLoading(true);
+      const order = await axiosPublic.post("/orders", newOrder);
+      if (order.data.insertedId) {
+        if (paymentOption === "PayFirst") {
+          const payment = await axiosPublic.post("/create-checkout-session", {
+            orderQuantity,
+            productPrice: perPrice,
+            email: user?.email,
+            orderId: order.data.insertedId,
+            productId: product?._id,
+            productName,
+            images: product?.images,
+          });
+
+          if (payment.data.url) {
+            window.location.assign(payment.data.url);
+          }
+
+          reset();
+          setLoading(false);
+        }
+      }
+    } catch (error) {
+      toast.error(error.code);
+    }
     console.log(newOrder);
   };
   const inputBox = (condition) =>

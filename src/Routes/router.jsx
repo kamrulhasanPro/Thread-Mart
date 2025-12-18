@@ -19,6 +19,8 @@ import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
 import ApproveOrder from "../Pages/Dashboard/Manager/ApproveOrder";
 import UpdateProduct from "../Pages/Dashboard/Manager/UpdateProduct";
 import OrderForm from "../Pages/ProductDetails/OrderForm";
+import PaymentSuccess from "../Pages/ProductDetails/PaymentSuccess";
+import PaymentCancel from "../Pages/ProductDetails/PaymentCancel";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <OrderForm />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment-success",
+        element: (
+          <PrivateRoute>
+            <PaymentSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment-cancel",
+        element: (
+          <PrivateRoute>
+            <PaymentCancel />
           </PrivateRoute>
         ),
       },
