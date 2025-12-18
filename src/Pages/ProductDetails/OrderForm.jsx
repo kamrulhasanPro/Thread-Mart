@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import HeadTitle from "../../Components/HeadTitle";
 import { useForm, useWatch } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Loading from "../../Components/Loading";
 import { axiosPublic } from "../../Hooks/axiosPublic";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const OrderForm = () => {
-  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const navigator = useNavigate();
   const { data: product } = useLoaderData();
   const splitName = user?.displayName.split(" ");
   const firstName = splitName[0];
@@ -60,6 +61,10 @@ const OrderForm = () => {
     try {
       setLoading(true);
       const order = await axiosPublic.post("/orders", newOrder);
+      if (order.data?.status === 409) {
+        toast.error(order.data.message);
+        setLoading(false);
+      }
       if (order.data.insertedId) {
         if (paymentOption === "PayFirst") {
           const payment = await axiosPublic.post("/create-checkout-session", {
@@ -78,6 +83,10 @@ const OrderForm = () => {
 
           reset();
           setLoading(false);
+        } else {
+          reset();
+          toast.success("Order Success");
+          navigator(-1);
         }
       }
     } catch (error) {
