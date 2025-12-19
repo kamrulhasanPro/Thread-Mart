@@ -4,7 +4,7 @@ const ReuseableModal = ({ modalRef, children }) => {
   return (
     <>
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="modal-box bg-secondary">
           {children}
         </div>
       </dialog>

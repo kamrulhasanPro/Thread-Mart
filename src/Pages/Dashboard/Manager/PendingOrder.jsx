@@ -7,11 +7,11 @@ import Loading from "../../../Components/Loading";
 import { MdEdit } from "react-icons/md";
 import { FaCheckCircle, FaEye, FaTimes } from "react-icons/fa";
 import ConfirmModal from "../../../Components/ConfirmModal";
-import { data, Link } from "react-router";
+import { Link } from "react-router";
 
 const PendingOrder = () => {
   const [open, setOpen] = useState(false);
-  //   const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
   const { user } = useAuth();
   const {
     data: orders = [],
@@ -28,9 +28,9 @@ const PendingOrder = () => {
   console.log(orders);
 
   const handleOpenModal = (id, updateValue) => {
-    // setSelectedId(id);
+    setSelectedId({ id, updateValue });
     setOpen(true);
-    orderStatusUpdate(id, updateValue);
+    // orderStatusUpdate(id, updateValue);
   };
 
   const orderStatusUpdate = async (id, updateValue) => {
@@ -142,7 +142,9 @@ const PendingOrder = () => {
           message="Are you sure you want to delete this product? This action cannot be undone."
           confirmText="Yes, Delete"
           confirmColor="bg-red-400"
-          //   onConfirm={orderStatusUpdate}
+          onConfirm={() =>
+            orderStatusUpdate(selectedId.id, selectedId.updateValue)
+          }
           onCancel={() => setOpen(false)}
         />
       </div>
