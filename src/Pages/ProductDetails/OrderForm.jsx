@@ -90,6 +90,7 @@ const OrderForm = () => {
         }
       }
     } catch (error) {
+      setLoading(false)
       toast.error(error.code);
     }
     console.log(newOrder);

@@ -13,10 +13,13 @@ import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
 import { useAuth } from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { axiosPublic } from "../Hooks/axiosPublic";
+import useRole from "../Hooks/useRole";
 
 const DashboardLayout = () => {
   const { signOutUser } = useAuth();
   const navigate = useNavigate();
+  const {role} = useRole();
+  
   const dashboardItemsLink = (
     <>
       <li onClick={() => navigate("/")}>
@@ -28,30 +31,33 @@ const DashboardLayout = () => {
         navName={"Home"}
         icon={<TiHome />}
       />
+      {role === "manager" && (
+        <>
+          <DashboardItemsLink
+            to={"/dashboard/add-product"}
+            navName={"Add Product"}
+            icon={<IoIosAddCircleOutline />}
+          />
 
-      <DashboardItemsLink
-        to={"/dashboard/add-product"}
-        navName={"Add Product"}
-        icon={<IoIosAddCircleOutline />}
-      />
+          <DashboardItemsLink
+            to={"/dashboard/manage-products"}
+            navName={"Manage Products"}
+            icon={<AiOutlineProduct />}
+          />
 
-      <DashboardItemsLink
-        to={"/dashboard/manage-products"}
-        navName={"Manage Products"}
-        icon={<AiOutlineProduct />}
-      />
+          <DashboardItemsLink
+            to={"/dashboard/pending-order"}
+            navName={"Pending Orders"}
+            icon={<MdOutlinePendingActions />}
+          />
 
-      <DashboardItemsLink
-        to={"/dashboard/pending-order"}
-        navName={"Pending Orders"}
-        icon={<MdOutlinePendingActions />}
-      />
-
-      <DashboardItemsLink
-        to={"/dashboard/approve-order"}
-        navName={"Approve Orders"}
-        icon={<BiTask />}
-      />
+          <DashboardItemsLink
+            to={"/dashboard/approve-order"}
+            navName={"Approve Orders"}
+            icon={<BiTask />}
+          />
+        </>
+      )}
     </>
   );
 

@@ -1,8 +1,11 @@
 import React from "react";
 import MyContainer from "../../../Components/MyContainer";
 import bannerImage from "../../../assets/heroImage.jpg";
+import useRole from "../../../Hooks/useRole";
 
 const Hero = () => {
+  const role = useRole()
+  console.log(role);
   return (
     <div
       className={

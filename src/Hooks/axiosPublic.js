@@ -1,6 +1,20 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
-export const axiosPublic = axios.create({
+const axiosPublic = axios.create({
   baseURL: "http://localhost:2000",
   withCredentials: true,
 });
+
+axiosPublic.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      console.log("Unauthorized or Forbidden");
+      toast.error("You are forbidden user. Not access for you.");
+    }
+    return Promise.reject(error);
+  }
+);
+
+export { axiosPublic };

@@ -21,6 +21,7 @@ import UpdateProduct from "../Pages/Dashboard/Manager/UpdateProduct";
 import OrderForm from "../Pages/ProductDetails/OrderForm";
 import PaymentSuccess from "../Pages/ProductDetails/PaymentSuccess";
 import PaymentCancel from "../Pages/ProductDetails/PaymentCancel";
+import RoleRoute from "./RoleRoute";
 
 export const router = createBrowserRouter([
   {
@@ -102,24 +103,44 @@ export const router = createBrowserRouter([
       },
       {
         path: "add-product",
-        Component: AddProduct,
+        element: (
+          <RoleRoute verifyRol={"manager"}>
+            <AddProduct />
+          </RoleRoute>
+        ),
       },
       {
         path: "manage-products",
-        Component: ManageProducts,
+        element: (
+          <RoleRoute verifyRol={"manager"}>
+            <ManageProducts />
+          </RoleRoute>
+        ),
       },
       {
         path: "pending-order",
-        Component: PendingOrder,
+        element: (
+          <RoleRoute verifyRol={"manager"}>
+            <PendingOrder />
+          </RoleRoute>
+        ),
       },
       {
         path: "approve-order",
-        Component: ApproveOrder,
+        element: (
+          <RoleRoute verifyRol={"manager"}>
+            <ApproveOrder />
+          </RoleRoute>
+        ),
       },
       {
         path: "update-product/:id",
         loader: ({ params }) => axiosPublic(`/product/${params.id}/specific`),
-        Component: UpdateProduct,
+        element: (
+          <RoleRoute verifyRol={"manager"}>
+            <UpdateProduct />
+          </RoleRoute>
+        ),
       },
     ],
   },
