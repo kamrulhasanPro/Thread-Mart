@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading";
 
 const OurProducts = () => {
-  const { data: products = [], isLoading } = useQuery({
+  const { data: {result: products = []} = {}, isLoading } = useQuery({
     queryKey: ["our-products"],
     queryFn: async () =>
       (await axiosPublic("/products?showOnHomePage=true&limit=6")).data,
