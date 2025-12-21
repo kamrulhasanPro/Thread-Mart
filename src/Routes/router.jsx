@@ -22,6 +22,9 @@ import OrderForm from "../Pages/ProductDetails/OrderForm";
 import PaymentSuccess from "../Pages/ProductDetails/PaymentSuccess";
 import PaymentCancel from "../Pages/ProductDetails/PaymentCancel";
 import RoleRoute from "./RoleRoute";
+import MyOrders from "../Pages/Dashboard/User/MyOrders";
+import TrackOrder from "../Pages/Dashboard/User/TrackOrder";
+import MyProfile from "../Pages/Dashboard/Share/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -141,6 +144,28 @@ export const router = createBrowserRouter([
             <UpdateProduct />
           </RoleRoute>
         ),
+      },
+
+      // buyer
+      {
+        path: "my-orders",
+        element: (
+          <RoleRoute verifyRol={"buyer"}>
+            <MyOrders />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "track-order/:orderId",
+        element: (
+          <RoleRoute verifyRol={"buyer"}>
+            <TrackOrder />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "profile",
+        Component: MyProfile,
       },
     ],
   },

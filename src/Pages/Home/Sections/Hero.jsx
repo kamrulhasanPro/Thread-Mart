@@ -1,12 +1,8 @@
 import React from "react";
 import MyContainer from "../../../Components/MyContainer";
 import bannerImage from "../../../assets/heroImage.jpg";
-import useRole from "../../../Hooks/useRole";
 
-const Hero = () => {
-  const role = useRole()
-  console.log(role);
-  return (
+const Hero = () => {  return (
     <div
       className={
         "flex flex-col-reverse md:flex-row gap-5 items-center min-h-[calc(100vh-80px)]"

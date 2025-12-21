@@ -14,12 +14,13 @@ import { useAuth } from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import useRole from "../Hooks/useRole";
+import { FaShoppingBag } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { signOutUser } = useAuth();
   const navigate = useNavigate();
-  const {role} = useRole();
-  
+  const { role } = useRole();
+
   const dashboardItemsLink = (
     <>
       <li onClick={() => navigate("/")}>
@@ -31,6 +32,27 @@ const DashboardLayout = () => {
         navName={"Home"}
         icon={<TiHome />}
       />
+
+      {role === "admin" && (
+        <>
+          <DashboardItemsLink
+            to={"/dashboard/manage-user"}
+            navName={"Manage Users"}
+            icon={<AiOutlineProduct />}
+          />
+          <DashboardItemsLink
+            to={"/dashboard/all-products"}
+            navName={"All Products"}
+            icon={<AiOutlineProduct />}
+          />
+          <DashboardItemsLink
+            to={"/dashboard/all-orders"}
+            navName={"All Orders"}
+            icon={<AiOutlineProduct />}
+          />
+        </>
+      )}
+
       {role === "manager" && (
         <>
           <DashboardItemsLink
@@ -55,6 +77,16 @@ const DashboardLayout = () => {
             to={"/dashboard/approve-order"}
             navName={"Approve Orders"}
             icon={<BiTask />}
+          />
+        </>
+      )}
+
+      {role === "buyer" && (
+        <>
+          <DashboardItemsLink
+            to={"/dashboard/my-orders"}
+            navName={"My Orders"}
+            icon={<FaShoppingBag />}
           />
         </>
       )}
