@@ -8,19 +8,26 @@ import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import ConfirmModal from "../../../Components/ConfirmModal";
 import { Link } from "react-router";
+import SearchFilter from "../../../Components/SearchFilter";
 
 const ManageProducts = () => {
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState("");
   const { user } = useAuth();
   const {
     data: products = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["my-products", user?.email],
+    queryKey: ["my-products", user?.email, searchValue, category],
     queryFn: async () =>
-      (await axiosPublic(`/manage-product?email=${user?.email}`)).data,
+      (
+        await axiosPublic(
+          `/manage-product?email=${user?.email}&search=${searchValue}&filter=${category}`
+        )
+      ).data,
     enabled: !!user?.email,
   });
 
@@ -39,9 +46,25 @@ const ManageProducts = () => {
   };
   return (
     <section>
-      <div>
+      <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
         <DashboardTitle>Manage Products ({products.length})</DashboardTitle>
+
+        {/* search & filter */}
+        <SearchFilter
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          filterValue={category}
+          setFilterValue={setCategory}
+        >
+          <option value="">Filter Category</option>
+          <option>Shirt</option>
+          <option>Pent</option>
+          <option>Jacket</option>
+          <option>Cap</option>
+        </SearchFilter>
       </div>
+
+      
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">
           <table className="table text-nowrap">

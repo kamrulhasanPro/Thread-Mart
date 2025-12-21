@@ -7,17 +7,22 @@ import { MdEdit } from "react-icons/md";
 import ReuseableModal from "../../../Components/ReuseableModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import SearchFilter from "../../../Components/SearchFilter";
 
 const ManageUsers = () => {
   const updateStatusRef = useRef(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [userStatus, setUserStatus] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const {
     data: allUsers = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["all-users"],
-    queryFn: async () => (await axiosPublic("/users")).data,
+    queryKey: ["all-users", searchValue, userStatus],
+    queryFn: async () =>
+      (await axiosPublic(`/users?search=${searchValue}&status=${userStatus}`))
+        .data,
   });
 
   const {
@@ -45,8 +50,21 @@ const ManageUsers = () => {
 
   return (
     <section>
-      <div>
+      <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
         <DashboardTitle>Manage Users ({allUsers?.length})</DashboardTitle>
+
+        {/* search & filter */}
+        <SearchFilter
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          filterValue={userStatus}
+          setFilterValue={setUserStatus}
+        >
+          <option value="">Filter Status</option>
+          <option value={"pending"}>Pending</option>
+          <option value={"approved"}>Approved</option>
+          <option value={"suspend"}>Suspend</option>
+        </SearchFilter>
       </div>
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">
