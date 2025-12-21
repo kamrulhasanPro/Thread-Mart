@@ -14,7 +14,7 @@ const RoleRoute = ({ verifyRol, children }) => {
 
   if (!user) return <Navigate to={"/login"} state={location} />;
 
-  if (role !== verifyRol) {
+  if (!verifyRol.includes(role)) {
     return <div>Forbidden User . not access for you</div>;
   }
   return children;

@@ -43,7 +43,7 @@ const MyOrders = () => {
   return (
     <section>
       <div>
-        <DashboardTitle>Pending Orders</DashboardTitle>
+        <DashboardTitle>My Orders ({orders?.length})</DashboardTitle>
       </div>
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">
@@ -144,6 +144,5 @@ const MyOrders = () => {
     </section>
   );
 };
-
 
 export default MyOrders;

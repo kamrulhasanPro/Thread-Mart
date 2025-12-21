@@ -11,8 +11,8 @@ import Loading from "../../../Components/Loading";
 const MyProfile = () => {
   const { user, signOutUser } = useAuth();
   const { data: userProfile = {}, isLoading } = useQuery({
-    queryKey: ["user", user?.email],
-    queryFn: async () => (await axiosPublic(`/user-role/${user?.email}`)).data,
+    queryKey: ["user", user?.email ],
+    queryFn: async () => (await axiosPublic(`/user/${user?.email}`)).data,
   });
 
   console.log(userProfile);
@@ -53,7 +53,7 @@ const MyProfile = () => {
               {user?.displayName || "User"}
             </h3>
             <p className="text-gray-400 text-sm">
-              {userProfile?.role.toLocaleUpperCase()} ACCOUNT
+              {userProfile?.role?.toLocaleUpperCase()} ACCOUNT
             </p>
           </div>
         </div>

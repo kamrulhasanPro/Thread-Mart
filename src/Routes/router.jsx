@@ -26,6 +26,7 @@ import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import TrackOrder from "../Pages/Dashboard/User/TrackOrder";
 import MyProfile from "../Pages/Dashboard/Share/MyProfile";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import ManageAllProducts from "../Pages/Dashboard/Admin/ManageAllProducts";
 
 export const router = createBrowserRouter([
   {
@@ -108,7 +109,7 @@ export const router = createBrowserRouter([
       {
         path: "add-product",
         element: (
-          <RoleRoute verifyRol={"manager"}>
+          <RoleRoute verifyRol={["manager"]}>
             <AddProduct />
           </RoleRoute>
         ),
@@ -116,7 +117,7 @@ export const router = createBrowserRouter([
       {
         path: "manage-products",
         element: (
-          <RoleRoute verifyRol={"manager"}>
+          <RoleRoute verifyRol={["manager"]}>
             <ManageProducts />
           </RoleRoute>
         ),
@@ -124,7 +125,7 @@ export const router = createBrowserRouter([
       {
         path: "pending-order",
         element: (
-          <RoleRoute verifyRol={"manager"}>
+          <RoleRoute verifyRol={["manager"]}>
             <PendingOrder />
           </RoleRoute>
         ),
@@ -132,7 +133,7 @@ export const router = createBrowserRouter([
       {
         path: "approve-order",
         element: (
-          <RoleRoute verifyRol={"manager"}>
+          <RoleRoute verifyRol={["manager"]}>
             <ApproveOrder />
           </RoleRoute>
         ),
@@ -141,7 +142,7 @@ export const router = createBrowserRouter([
         path: "update-product/:id",
         loader: ({ params }) => axiosPublic(`/product/${params.id}/specific`),
         element: (
-          <RoleRoute verifyRol={"manager"}>
+          <RoleRoute verifyRol={["manager", "admin"]}>
             <UpdateProduct />
           </RoleRoute>
         ),
@@ -151,7 +152,7 @@ export const router = createBrowserRouter([
       {
         path: "my-orders",
         element: (
-          <RoleRoute verifyRol={"buyer"}>
+          <RoleRoute verifyRol={["buyer"]}>
             <MyOrders />
           </RoleRoute>
         ),
@@ -159,7 +160,7 @@ export const router = createBrowserRouter([
       {
         path: "track-order/:orderId",
         element: (
-          <RoleRoute verifyRol={"buyer"}>
+          <RoleRoute verifyRol={["buyer"]}>
             <TrackOrder />
           </RoleRoute>
         ),
@@ -169,8 +170,16 @@ export const router = createBrowserRouter([
       {
         path: "manage-users",
         element: (
-          <RoleRoute verifyRol={"admin"}>
+          <RoleRoute verifyRol={["admin"]}>
             <ManageUsers />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "all-products",
+        element: (
+          <RoleRoute verifyRol={["admin"]}>
+            <ManageAllProducts />
           </RoleRoute>
         ),
       },
