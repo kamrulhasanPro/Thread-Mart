@@ -40,7 +40,7 @@ const ManageProducts = () => {
   return (
     <section>
       <div>
-        <DashboardTitle>Manage Products</DashboardTitle>
+        <DashboardTitle>Manage Products ({products.length})</DashboardTitle>
       </div>
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">

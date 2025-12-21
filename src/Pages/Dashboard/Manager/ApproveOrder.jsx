@@ -76,7 +76,7 @@ const ApproveOrder = () => {
   return (
     <section>
       <div>
-        <DashboardTitle>Approved Orders</DashboardTitle>
+        <DashboardTitle>Approved Orders ({orders.length})</DashboardTitle>
       </div>
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">

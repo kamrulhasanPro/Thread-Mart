@@ -1,44 +1,24 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef, useState } from "react";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useAuth } from "../../../Hooks/useAuth";
-import ConfirmModal from "../../../Components/ConfirmModal";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 import Loading from "../../../Components/Loading";
-import { FaEye, FaTimes } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { Link } from "react-router";
-import { toast } from "react-toastify";
 import ReuseableModal from "../../../Components/ReuseableModal";
-import { MdDateRange, MdLocationPin } from "react-icons/md";
 
-const MyOrders = () => {
+const AllOrders = () => {
   const { user } = useAuth();
-  const [open, setOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-  const openModalRef = useRef(null);
   const {
     data: orders = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["my-orders", user?.email],
-    queryFn: async () => (await axiosPublic(`/my-orders/${user?.email}`)).data,
+    queryKey: ["all-orders", user?.email],
+    queryFn: async () => (await axiosPublic(`/all-orders`)).data,
     enabled: !!user?.email,
   });
-
-  const handleOpenModal = (id) => {
-    setSelectedId(id);
-    setOpen(true);
-  };
-
-  const handleRemove = async (id) => {
-    const result = await axiosPublic.delete(`/order/${id}/delete`);
-    if (result.data.deletedCount) {
-      toast.success("Delete success");
-      refetch();
-      setOpen(false);
-    }
-  };
 
   return (
     <section>
@@ -53,10 +33,10 @@ const MyOrders = () => {
               <tr>
                 <th></th>
                 <th>Order ID</th>
+                <th>User</th>
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Status</th>
-                <th>Payment</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -68,6 +48,14 @@ const MyOrders = () => {
 
                   {/* Order ID */}
                   <td>{order._id}</td>
+
+                  {/* user */}
+                  <td>
+                    <p className="font-semibold">
+                      {order?.customer?.firstName} {order?.customer?.lastName}
+                    </p>
+                    <p className="text-gray-400">{order?.customer?.buyerEmail}</p>
+                  </td>
 
                   {/* product */}
                   <td>
@@ -85,11 +73,6 @@ const MyOrders = () => {
                     <p className="font-semibold">{order.orderStatus}</p>
                   </td>
 
-                  {/* payment */}
-                  <td>
-                    <p className="font-semibold">{order.paymentStatus}</p>
-                  </td>
-
                   {/* action */}
                   <td>
                     <div className="flex items-center justify-start gap-2">
@@ -99,15 +82,6 @@ const MyOrders = () => {
                       >
                         <FaEye />
                       </Link>
-                      {order.orderStatus === "pending" && (
-                        <button
-                          title="Remove"
-                          onClick={() => handleOpenModal(order._id)}
-                          className="p-1.5 cursor-pointer bg-red-400 rounded-full text-lg"
-                        >
-                          <FaTimes />
-                        </button>
-                      )}
                     </div>
                   </td>
                 </tr>
@@ -126,23 +100,9 @@ const MyOrders = () => {
             )
           )}
         </div>
-        <ConfirmModal
-          isOpen={open}
-          type="info"
-          title="Delete Product"
-          message="Are you sure you want to delete this product? This action cannot be undone."
-          confirmText="Yes, Delete"
-          confirmColor="bg-red-400"
-          onConfirm={() => handleRemove(selectedId)}
-          onCancel={() => setOpen(false)}
-        />
-
-        {/* show details & and order status timeline */}
-        {/* view tracking */}
-        <ReuseableModal modalRef={openModalRef}></ReuseableModal>
       </div>
     </section>
   );
 };
 
-export default MyOrders;
+export default AllOrders;

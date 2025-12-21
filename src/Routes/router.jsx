@@ -27,6 +27,7 @@ import TrackOrder from "../Pages/Dashboard/User/TrackOrder";
 import MyProfile from "../Pages/Dashboard/Share/MyProfile";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageAllProducts from "../Pages/Dashboard/Admin/ManageAllProducts";
+import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
 
 export const router = createBrowserRouter([
   {
@@ -160,7 +161,7 @@ export const router = createBrowserRouter([
       {
         path: "track-order/:orderId",
         element: (
-          <RoleRoute verifyRol={["buyer"]}>
+          <RoleRoute verifyRol={["buyer", "admin", "manager"]}>
             <TrackOrder />
           </RoleRoute>
         ),
@@ -180,6 +181,14 @@ export const router = createBrowserRouter([
         element: (
           <RoleRoute verifyRol={["admin"]}>
             <ManageAllProducts />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "all-orders",
+        element: (
+          <RoleRoute verifyRol={["admin"]}>
+            <AllOrders />
           </RoleRoute>
         ),
       },

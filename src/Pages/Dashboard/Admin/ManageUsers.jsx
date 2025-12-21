@@ -11,7 +11,11 @@ import { toast } from "react-toastify";
 const ManageUsers = () => {
   const updateStatusRef = useRef(null);
   const [selectedId, setSelectedId] = useState(null);
-  const { data: allUsers = [], isLoading, refetch } = useQuery({
+  const {
+    data: allUsers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["all-users"],
     queryFn: async () => (await axiosPublic("/users")).data,
   });
@@ -20,7 +24,7 @@ const ManageUsers = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const handleUpdateStatus = async (data) => {
@@ -30,8 +34,8 @@ const ManageUsers = () => {
       data
     );
     if (updateStatus.data.modifiedCount) {
-      refetch()
-      reset()
+      refetch();
+      reset();
       setSelectedId(null);
       toast.success("Add Successfully");
       updateStatusRef.current.close();
@@ -150,6 +154,13 @@ const ManageUsers = () => {
                 <p className="text-red-400 text-sm">{errors.status.message}</p>
               )}
             </label>
+
+            <input
+              type="text"
+              placeholder="Message/Review"
+              className={`w-full border px-4 py-3 rounded-md outline-none border-primary/20 focus:border-primary transition-all `}
+              {...register("message")}
+            />
 
             <div className="space-x-2">
               <button type="submit" className="btn  btn-soft btn-primary">

@@ -9,9 +9,13 @@ const axiosPublic = axios.create({
 axiosPublic.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log(error);
     if (error.response?.status === 401 || error.response?.status === 403) {
       console.log("Unauthorized or Forbidden");
-      toast.error("You are forbidden user. Not access for you.");
+      toast.error(
+        error?.response?.data?.message ||
+          "You are forbidden user. Not access for you."
+      );
     }
     return Promise.reject(error);
   }

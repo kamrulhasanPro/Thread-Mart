@@ -11,7 +11,7 @@ import Loading from "../../../Components/Loading";
 const MyProfile = () => {
   const { user, signOutUser } = useAuth();
   const { data: userProfile = {}, isLoading } = useQuery({
-    queryKey: ["user", user?.email ],
+    queryKey: ["user", user?.email],
     queryFn: async () => (await axiosPublic(`/user/${user?.email}`)).data,
   });
 
@@ -52,9 +52,10 @@ const MyProfile = () => {
             <h3 className="text-xl font-semibold">
               {user?.displayName || "User"}
             </h3>
-            <p className="text-gray-400 text-sm">
+            <div className="text-gray-400 text-sm flex items-center gap-2">
+              <span className={`w-3 h-3 rounded-full inline-block ${userProfile?.status === 'suspend' ? 'bg-red-400' : 'bg-green-400'}`}></span>{" "}{userProfile?.status === 'suspend' ? 'SUSPEND ': 'ACTIVE '}
               {userProfile?.role?.toLocaleUpperCase()} ACCOUNT
-            </p>
+            </div>
           </div>
         </div>
 
@@ -64,6 +65,9 @@ const MyProfile = () => {
           <InfoRow label="Email" value={userProfile?.email} />
           <InfoRow label="Role" value={userProfile?.role} />
           <InfoRow label="Account Status" value={userProfile?.status} />
+          {userProfile?.message && (
+            <InfoRow label="Message/Review" value={userProfile?.message} />
+          )}
         </div>
 
         {/* Logout */}

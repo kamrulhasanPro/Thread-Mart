@@ -45,7 +45,7 @@ const PendingOrder = () => {
   return (
     <section>
       <div>
-        <DashboardTitle>Pending Orders</DashboardTitle>
+        <DashboardTitle>Pending Orders ({orders.length})</DashboardTitle>
       </div>
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">
@@ -111,7 +111,7 @@ const PendingOrder = () => {
                         <FaTimes />
                       </button>
                       <Link
-                        to={`/product/${order.productId}`}
+                        to={`/dashboard/track-order/${order._id}`}
                         className="p-1.5 cursor-pointer bg-blue-400 rounded-full text-lg"
                       >
                         <FaEye />
@@ -136,10 +136,10 @@ const PendingOrder = () => {
         </div>
         <ConfirmModal
           isOpen={open}
-          type="info"
-          title="Delete Product"
-          message="Are you sure you want to delete this product? This action cannot be undone."
-          confirmText="Yes, Delete"
+          type="warning"
+          title="Reject Order"
+          message="Are you sure you want to reject this order? This action cannot be undone."
+          confirmText="Yes, Rejected"
           confirmColor="bg-red-400"
           onConfirm={() =>
             orderStatusUpdate(selectedId.id, selectedId.updateValue)
