@@ -30,8 +30,6 @@ const MyProfile = () => {
   if (isLoading) {
     return <Loading className={"!h-screen"} />;
   }
-  const name = "kamrul";
-  // name.toLocaleUpperCase
 
   return (
     <section className="max-w-3xl mx-auto">

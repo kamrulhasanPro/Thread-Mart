@@ -8,7 +8,7 @@ const useRole = () => {
 
   const { data: {role} = "buyer", isLoading } = useQuery({
     queryKey: ["role", user?.email],
-    queryFn: async () => (await axiosPublic(`/user-role/${user?.email}`)).data,
+    queryFn: async () => (await axiosPublic(`/user/${user?.email}`)).data,
   });
   console.log(role);
   return { role, isLoading };

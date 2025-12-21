@@ -14,7 +14,7 @@ import { useAuth } from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import useRole from "../Hooks/useRole";
-import { FaShoppingBag } from "react-icons/fa";
+import { FaClipboardList, FaShoppingBag, FaUsers } from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { signOutUser } = useAuth();
@@ -36,9 +36,9 @@ const DashboardLayout = () => {
       {role === "admin" && (
         <>
           <DashboardItemsLink
-            to={"/dashboard/manage-user"}
+            to={"/dashboard/manage-users"}
             navName={"Manage Users"}
-            icon={<AiOutlineProduct />}
+            icon={<FaUsers />}
           />
           <DashboardItemsLink
             to={"/dashboard/all-products"}
@@ -48,7 +48,7 @@ const DashboardLayout = () => {
           <DashboardItemsLink
             to={"/dashboard/all-orders"}
             navName={"All Orders"}
-            icon={<AiOutlineProduct />}
+            icon={<FaClipboardList />}
           />
         </>
       )}

@@ -25,6 +25,7 @@ import RoleRoute from "./RoleRoute";
 import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import TrackOrder from "../Pages/Dashboard/User/TrackOrder";
 import MyProfile from "../Pages/Dashboard/Share/MyProfile";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -160,6 +161,16 @@ export const router = createBrowserRouter([
         element: (
           <RoleRoute verifyRol={"buyer"}>
             <TrackOrder />
+          </RoleRoute>
+        ),
+      },
+
+      // admin
+      {
+        path: "manage-users",
+        element: (
+          <RoleRoute verifyRol={"admin"}>
+            <ManageUsers />
           </RoleRoute>
         ),
       },
