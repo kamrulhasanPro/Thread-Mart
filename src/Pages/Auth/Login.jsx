@@ -153,7 +153,7 @@ const Login = () => {
             )}
           </div>
 
-          <button className="btn btn-primary w-full">Register</button>
+          <button className="btn btn-primary w-full">Login</button>
         </form>
 
         {/* google login */}
