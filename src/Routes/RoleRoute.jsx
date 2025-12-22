@@ -4,6 +4,7 @@ import Loading from "../Components/Loading";
 import { Navigate, useLocation } from "react-router";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import useRole from "../Hooks/useRole";
+import Forbidden from "../Components/Forbidden";
 
 const RoleRoute = ({ verifyRol, children }) => {
   const { user, loader, setLoader } = useAuth();
@@ -15,7 +16,7 @@ const RoleRoute = ({ verifyRol, children }) => {
   if (!user) return <Navigate to={"/login"} state={location} />;
 
   if (!verifyRol.includes(role)) {
-    return <div>Forbidden User . not access for you</div>;
+    return <Forbidden />;
   }
   return children;
 };

@@ -3,10 +3,8 @@ import React from "react";
 import { axiosPublic } from "../../Hooks/axiosPublic";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 
-
 const ReviewAndRelevant = ({ category }) => {
-  
-  const { data: relevantProducts = [] } = useQuery({
+  const { data: { result: relevantProducts = [] } = {} } = useQuery({
     queryKey: ["related-products", category],
     queryFn: async () =>
       (await axiosPublic(`/products?category=${category}`)).data,
