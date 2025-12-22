@@ -2,7 +2,7 @@ import React from "react";
 import DashboardItemsLink from "../Components/Dashboard/DashboardItemsLink";
 import { TiHome } from "react-icons/ti";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { MdOutlinePendingActions } from "react-icons/md";
+import { MdOutlineMenuOpen, MdOutlinePendingActions } from "react-icons/md";
 import { AiOutlineProduct } from "react-icons/ai";
 import { BiTask } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
@@ -102,7 +102,7 @@ const DashboardLayout = () => {
   };
   return (
     <section>
-    <title>ThreadMart Dashboard | Home</title>
+      <title>ThreadMart Dashboard | Home</title>
 
       <div className="drawer md:drawer-open">
         <input
@@ -180,10 +180,10 @@ const DashboardLayout = () => {
                 <li>
                   <label
                     htmlFor="my-drawer-4"
-                    className="flex is-drawer-open:justify-end"
+                    className="flex is-drawer-open:justify-end text-lg is-drawer-open:bg-gray-700 "
                   >
                     {/* Sidebar toggle icon */}
-                    <TbLayoutSidebarRightCollapseFilled />
+                    <MdOutlineMenuOpen />
                   </label>
                 </li>
               </ul>

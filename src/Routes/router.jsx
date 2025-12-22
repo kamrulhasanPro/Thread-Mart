@@ -12,7 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
-import ManagerHome from "../Pages/Dashboard/Manager/MenagerHome";
+import ManagerDashboardHome from "../Pages/Dashboard/Manager/MenagerDashboardHome";
 import AddProduct from "../Pages/Dashboard/Manager/AddProduct";
 import ManageProducts from "../Pages/Dashboard/Manager/ManageProducts";
 import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
@@ -28,6 +28,7 @@ import MyProfile from "../Pages/Dashboard/Share/MyProfile";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageAllProducts from "../Pages/Dashboard/Admin/ManageAllProducts";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +96,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  // dashboard
   {
     path: "/dashboard",
     element: (
@@ -105,7 +108,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: ManagerHome,
+        Component: DashboardHome,
       },
       {
         path: "add-product",
