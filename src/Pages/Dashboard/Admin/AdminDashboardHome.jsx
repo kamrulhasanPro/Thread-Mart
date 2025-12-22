@@ -1,5 +1,4 @@
 import React from "react";
-import { FaUsers } from "react-icons/fa";
 import ViewCard from "../../../Components/Dashboard/ViewCard";
 import { useQuery } from "@tanstack/react-query";
 import useRole from "../../../Hooks/useRole";
@@ -10,6 +9,7 @@ import {
   GoPackage,
   GoChecklist,
 } from "react-icons/go";
+import Loading from "../../../Components/Loading";
 
 const AdminDashboardHome = () => {
   const { role } = useRole();
@@ -18,8 +18,12 @@ const AdminDashboardHome = () => {
     queryFn: async () => (await axiosPublic("/admin/dashboard-stats")).data,
   });
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   const { totalUsers, totalManagers, totalProducts, totalOrders } = stats;
-  const statsData = [
+  const adminStats = [
     {
       label: "Total Managers",
       value: totalManagers,
@@ -50,8 +54,10 @@ const AdminDashboardHome = () => {
   return (
     <div className="grid  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5  ">
       {/* stats show */}
-      {statsData.map((item) => (
+      {adminStats.map((item, i) => (
         <ViewCard
+                key={i}
+
           label={item.label}
           Icon={item.icon}
           value={item.value}

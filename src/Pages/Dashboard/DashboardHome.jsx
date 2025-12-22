@@ -26,7 +26,7 @@ const DashboardHome = () => {
       ) : role === "manager" ? (
         <ManagerDashboardHome />
       ) : (
-        <BuyerDashboardHome />
+        role === "buyer" && <BuyerDashboardHome />
       )}
     </section>
   );
