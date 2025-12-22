@@ -102,6 +102,8 @@ const DashboardLayout = () => {
   };
   return (
     <section>
+    <title>ThreadMart Dashboard | Home</title>
+
       <div className="drawer md:drawer-open">
         <input
           id="my-drawer-4"

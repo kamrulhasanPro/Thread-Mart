@@ -76,6 +76,8 @@ const Login = () => {
 
   return (
     <MyContainer className={"min-h-[calc(100vh-80px-275px)] flex items-center"}>
+      <title>ThreadMart | Login</title>
+
       <div className="bg-primary/10 max-w-md w-full  mx-auto p-5 rounded-2xl ">
         <h4 className="text-4xl">LogIn </h4>
         <form

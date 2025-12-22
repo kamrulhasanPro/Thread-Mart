@@ -53,6 +53,8 @@ const ManageAllProducts = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Manage All Products</title>
+
       <div>
         <DashboardTitle>Manage All Products ({products.length})</DashboardTitle>
       </div>

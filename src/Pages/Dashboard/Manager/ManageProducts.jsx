@@ -46,6 +46,8 @@ const ManageProducts = () => {
   };
   return (
     <section>
+      <title>ThreadMart Dashboard | Manage Products</title>
+
       <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
         <DashboardTitle>Manage Products ({products.length})</DashboardTitle>
 
@@ -64,7 +66,6 @@ const ManageProducts = () => {
         </SearchFilter>
       </div>
 
-      
       <div>
         <div className="overflow-x-auto border border-gray-600/50 rounded-xl max-h-[calc(100vh-100px)]">
           <table className="table text-nowrap">

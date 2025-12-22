@@ -42,6 +42,8 @@ const MyOrders = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | My Orders</title>
+
       <div>
         <DashboardTitle>My Orders ({orders?.length})</DashboardTitle>
       </div>

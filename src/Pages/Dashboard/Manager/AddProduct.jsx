@@ -88,6 +88,8 @@ const AddProduct = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Add Product</title>
+
       <div className="text-white">
         <DashboardTitle>Add Product</DashboardTitle>
 

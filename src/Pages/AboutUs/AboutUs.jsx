@@ -37,6 +37,7 @@ const AboutUs = () => {
 
   return (
     <section>
+            <title>ThreadMart | About Us</title>
       <HeadTitle className={"!mt-0 !mb-5"}>About Us</HeadTitle>
       <div className="flex flex-col items-center justify-center text-gray-300 text-center gap-5 max-w-3xl mx-auto">
         <p className=" ">

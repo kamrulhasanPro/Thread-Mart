@@ -50,6 +50,8 @@ const ManageUsers = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Manage Users</title>
+
       <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
         <DashboardTitle>Manage Users ({allUsers?.length})</DashboardTitle>
 

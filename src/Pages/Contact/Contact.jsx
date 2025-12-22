@@ -94,6 +94,8 @@ const Contact = () => {
   const inputBox = `w-full border px-4 py-3 rounded-md outline-none border-primary/20 focus:border-primary transition-all`;
   return (
     <section>
+      <title>ThreadMart | Contact Us</title>
+
       <HeadTitle className={"!mt-0"}>Contact Us</HeadTitle>
 
       <div className="flex flex-col-reverse sm:flex-row gap-10">

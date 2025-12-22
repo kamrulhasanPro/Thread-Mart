@@ -96,6 +96,8 @@ const UpdateProduct = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Update Product</title>
+
       <div className="text-white">
         <DashboardTitle>Update Product</DashboardTitle>
 

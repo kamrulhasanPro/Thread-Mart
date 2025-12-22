@@ -48,11 +48,13 @@ const TrackOrder = () => {
   console.log(order);
 
   if (isLoading) {
-    return <Loading className={'!h-screen'}/>;
+    return <Loading className={"!h-screen"} />;
   }
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Track Order</title>
+
       <div>
         {/* Header */}
         <div className="flex justify-between items-center mb-4">

@@ -44,6 +44,8 @@ const PendingOrder = () => {
   };
   return (
     <section>
+      <title>ThreadMart Dashboard | Pending Orders</title>
+
       <div>
         <DashboardTitle>Pending Orders ({orders.length})</DashboardTitle>
       </div>

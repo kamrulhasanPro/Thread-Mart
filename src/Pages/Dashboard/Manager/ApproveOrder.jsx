@@ -75,6 +75,8 @@ const ApproveOrder = () => {
 
   return (
     <section>
+      <title>ThreadMart Dashboard | Approved Orders</title>
+
       <div>
         <DashboardTitle>Approved Orders ({orders.length})</DashboardTitle>
       </div>

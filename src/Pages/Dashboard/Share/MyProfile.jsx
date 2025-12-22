@@ -33,6 +33,8 @@ const MyProfile = () => {
 
   return (
     <section className="max-w-3xl mx-auto">
+      <title>ThreadMart | My Profile</title>
+
       <DashboardTitle>My Profile</DashboardTitle>
 
       <div className="mt-6 bg-secondary/20 border border-gray-600/40 rounded-xl p-6">
@@ -53,7 +55,14 @@ const MyProfile = () => {
               {user?.displayName || "User"}
             </h3>
             <div className="text-gray-400 text-sm flex items-center gap-2">
-              <span className={`w-3 h-3 rounded-full inline-block ${userProfile?.status === 'suspend' ? 'bg-red-400' : 'bg-green-400'}`}></span>{" "}{userProfile?.status === 'suspend' ? 'SUSPEND ': 'ACTIVE '}
+              <span
+                className={`w-3 h-3 rounded-full inline-block ${
+                  userProfile?.status === "suspend"
+                    ? "bg-red-400"
+                    : "bg-green-400"
+                }`}
+              ></span>{" "}
+              {userProfile?.status === "suspend" ? "SUSPEND " : "ACTIVE "}
               {userProfile?.role?.toLocaleUpperCase()} ACCOUNT
             </div>
           </div>

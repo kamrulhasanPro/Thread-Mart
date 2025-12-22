@@ -1,8 +1,10 @@
 import React from "react";
 import MyContainer from "../../../Components/MyContainer";
 import bannerImage from "../../../assets/heroImage.jpg";
+import { Link } from "react-router";
 
-const Hero = () => {  return (
+const Hero = () => {
+  return (
     <div
       className={
         "flex flex-col-reverse md:flex-row gap-5 items-center min-h-[calc(100vh-80px)]"
@@ -28,10 +30,12 @@ const Hero = () => {  return (
         </p>
 
         <div className="flex gap-4 flex-wrap mt-4">
-          <button className="btn btn-primary">Browse Collection</button>
-          <button className="btn btn-primary btn-outline">
+          <Link to={"/all-products"} className="btn btn-primary">
+            Browse Collection
+          </Link>
+          <Link to={"/dashboard"} className="btn btn-primary btn-outline">
             View Dashboard
-          </button>
+          </Link>
         </div>
 
         {/* free time */}

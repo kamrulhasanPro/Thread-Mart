@@ -52,6 +52,8 @@ const Register = () => {
 
   return (
     <MyContainer className={"min-h-[calc(100vh-80px-275px)]"}>
+      <title>ThreadMart | Register</title>
+
       <div className="bg-primary/10 max-w-md w-full mx-auto p-5 rounded-2xl">
         <h4 className="text-4xl">Sign Up With Email</h4>
         <form

@@ -29,6 +29,8 @@ const AllOrders = () => {
   console.log(orderStatus);
   return (
     <section>
+      <title>ThreadMart Dashboard | All Orders</title>
+
       <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
         <DashboardTitle>All Orders ({orders?.length})</DashboardTitle>
 

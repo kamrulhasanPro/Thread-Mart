@@ -22,6 +22,7 @@ const AllProducts = () => {
 
   return (
     <section>
+      <title>ThreadMart | All Products</title>
       <HeadTitle className={"!mt-0"}>All Products ({quantity})</HeadTitle>
       {isLoading ? (
         <Loading />
