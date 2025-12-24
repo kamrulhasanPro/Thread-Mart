@@ -2,7 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const axiosPublic = axios.create({
-  baseURL: "https://thread-mart-backend.vercel.app",
+  // baseURL: "https://thread-mart-backend.vercel.app",
+  baseURL: "http://localhost:2000",
   withCredentials: true,
 });
 

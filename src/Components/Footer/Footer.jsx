@@ -60,6 +60,9 @@ const Footer = () => {
           </div>
         </nav>
       </MyContainer>
+      <p className="text-center text-gray-400 pb-4">
+        © 2025 Thread Mart. All rights reserved.
+      </p>
     </footer>
   );
 };

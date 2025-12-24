@@ -1,57 +1,104 @@
 import React from "react";
 import MyContainer from "../../../Components/MyContainer";
 import bannerImage from "../../../assets/heroImage.jpg";
+import herosecond from "../../../assets/herosecond.jpg";
+import herofourth from "../../../assets/herofourth.jpg";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const stagger = {
+  show: { transition: { staggerChildren: 0.15 } },
+};
 
 const Hero = () => {
   return (
-    <div
-      className={
-        "flex flex-col-reverse md:flex-row gap-5 items-center min-h-[calc(100vh-80px)]"
-      }
-    >
+    <div className="flex flex-col-reverse md:flex-row gap-5 items-center justify-between min-h-[calc(100vh-80px)]">
+      
       {/* text content */}
-      <div className="flex-1">
-        {/* tagline */}
-        <p className="text-lg sm:text-xl mb-4">
+      <motion.div
+        className="flex-1"
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.6 }}
+      >
+        <motion.p variants={fadeUp} className="text-lg sm:text-xl mb-4">
           Trusted Bulk Garment Marketplace
-        </p>
+        </motion.p>
 
-        {/* headline */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-1">
+        <motion.h1
+          variants={fadeUp}
+          className="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-1"
+        >
           Streamline Your Garment Orders & Production in One Smart Platform
-        </h1>
+        </motion.h1>
 
-        {/* description */}
-        <p className="text-sm text-gray-400">
+        <motion.p variants={fadeUp} className="text-sm text-gray-400">
           Manage bulk garment orders, track production progress, and connect
           buyers with manufacturers all from one powerful, easy to use platform
           designed for modern apparel businesses.
-        </p>
+        </motion.p>
 
-        <div className="flex gap-4 flex-wrap mt-4">
+        <motion.div variants={fadeUp} className="flex gap-4 flex-wrap mt-4">
           <Link to={"/all-products"} className="btn btn-primary">
             Browse Collection
           </Link>
           <Link to={"/dashboard"} className="btn btn-primary btn-outline">
             View Dashboard
           </Link>
-        </div>
-
-        {/* free time */}
-        {/* Stats: 1,200+ Orders | 150+ Suppliers | 98% On-Time */}
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* image */}
-      <div className="flex-1">
-        <figure className="rounded-2xl overflow-hidden border-7 border-primary hover:scale-105 hover:rotate-0 rotate-2 transition-all hover:shadow-lg shadow-primary">
+      <motion.div
+        className="flex-1 grid grid-cols-2 gap-4 h-[460px]"
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.div
+          variants={fadeUp}
+          className="col-span-1 row-span-2 rounded-2xl overflow-hidden shadow-xl"
+        >
           <img
             src={bannerImage}
-            alt="heroImage"
-            className="object-cover hover:scale-110 transition duration-300"
+            alt="hero"
+            className="w-full h-full object-cover hover:scale-105 transition duration-300"
           />
-        </figure>
-      </div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl overflow-hidden shadow-lg"
+        >
+          <img
+            src={herosecond}
+            alt="hero"
+            className="w-full h-full object-cover hover:scale-105 transition duration-300"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl overflow-hidden shadow-lg"
+        >
+          <img
+            src={herofourth}
+            alt="hero"
+            className="w-full h-full object-cover hover:scale-105 transition duration-300"
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
