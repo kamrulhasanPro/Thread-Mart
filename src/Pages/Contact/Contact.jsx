@@ -1,4 +1,5 @@
 import HeadTitle from "../../Components/HeadTitle";
+import { motion } from "framer-motion";
 import { FiMail, FiPhone } from "react-icons/fi";
 import {
   FaLinkedinIn,
@@ -90,7 +91,31 @@ const Contact = () => {
       icon: <FaWhatsapp className="text-[#32e6e2]" size={28} />,
     },
   ];
+  const fadeUp = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+      scale: 0.97,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
+  const stagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
   const inputBox = `w-full border px-4 py-3 rounded-md outline-none border-primary/20 focus:border-primary transition-all`;
   return (
     <section>
@@ -98,69 +123,99 @@ const Contact = () => {
 
       <HeadTitle className={"!mt-0"}>Contact Us</HeadTitle>
 
-      <div className="flex flex-col-reverse sm:flex-row gap-10">
-        <div className="">
-          <h4 className="text-primary font-semibold text-xl">Let's Connect</h4>
-          <p className="text-gray-400 leading-relaxed">
-            Whether you are sourcing garments, exploring a partnership, or need
-            support — our team is ready to assist you with quick and
-            professional communication.
-          </p>
+      <motion.div 
+  variants={stagger}
+      initial="hidden"
+        whileInView="show"
+        className="flex flex-col-reverse sm:flex-row gap-10">
+        <motion.div variants={fadeUp}>
+  <h4 className="text-primary font-semibold text-xl">
+    Let's Connect
+  </h4>
 
-          <div>
-            {contactInfo.map((item) => (
-              <div className="bg-primary/10 p-4 rounded-2xl mt-2 flex  gap-3 items-center hover:scale-105 duration-300 hover:shadow-lg shadow-primary/20">
-                <p>{item.icon}</p>
-                <div>
-                  <p className="text-sm text-gray-400">{item.label}</p>
-                  <p>{item.value}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+  <p className="text-gray-400 leading-relaxed">
+    Whether you are sourcing garments, exploring a partnership, or need
+    support — our team is ready to assist you with quick and
+    professional communication.
+  </p>
 
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold text-[#32e6e2] mb-4">
-              Connect With Me
-            </h3>
-
-            <div className="flex items-center gap-4 flex-wrap">
-              {socialLinks.map((item) => (
-                <a
-                  href={item.link}
-                  key={item.id}
-                  className="hover:scale-105 duration-300"
-                >
-                  {item.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+  {/* Contact info cards */}
+  <motion.div
+    variants={stagger}
+    className="mt-4"
+  >
+    {contactInfo.map((item) => (
+      <motion.div
+        key={item.id}
+        variants={fadeUp}
+        className="bg-primary/10 p-4 rounded-2xl mt-2
+          flex gap-3 items-center
+          hover:scale-105 duration-300
+          hover:shadow-lg shadow-primary/20"
+      >
+        <p>{item.icon}</p>
+        <div>
+          <p className="text-sm text-gray-400">{item.label}</p>
+          <p>{item.value}</p>
         </div>
+      </motion.div>
+    ))}
+  </motion.div>
+
+  {/* Social links */}
+  <motion.div
+    variants={fadeUp}
+    className="mt-6"
+  >
+    <h3 className="text-lg font-semibold text-[#32e6e2] mb-4">
+      Connect With Me
+    </h3>
+
+    <div className="flex items-center gap-4 flex-wrap">
+      {socialLinks.map((item) => (
+        <motion.a
+          key={item.id}
+          href={item.link}
+          whileHover={{ scale: 1.1 }}
+          className="duration-300"
+        >
+          {item.icon}
+        </motion.a>
+      ))}
+    </div>
+  </motion.div>
+</motion.div>
+
 
         {/* RIGHT FORM SECTION */}
-        <div className="bg-primary/10 p-8 shadow-md border rounded-lg border-primary/50 text-white">
-          <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
+        <motion.div
+  variants={fadeUp}
+  transition={{ delay: 0.15 }}
+  className="bg-primary/10 p-8 shadow-md
+    border rounded-lg border-primary/50 text-white"
+>
+  <h3 className="text-xl font-semibold mb-6">
+    Send a Message
+  </h3>
 
-          <form className="space-y-4">
-            <input type="text" placeholder="Your Name" className={inputBox} />
+  <form className="space-y-4">
+    <input type="text" placeholder="Your Name" className={inputBox} />
+    <input type="email" placeholder="Your Email" className={inputBox} />
+    <input type="text" placeholder="Subject" className={inputBox} />
 
-            <input type="email" placeholder="Your Email" className={inputBox} />
+    <textarea
+      placeholder="Your Message"
+      rows="5"
+      className={inputBox}
+    />
 
-            <input type="text" placeholder="Subject" className={inputBox} />
+    <button type="submit" className="btn btn-primary w-full">
+      Send Message
+    </button>
+  </form>
+</motion.div>
 
-            <textarea
-              placeholder="Your Message"
-              rows="5"
-              className={inputBox}
-            ></textarea>
-
-            <button type="submit" className="btn btn-primary w-full">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

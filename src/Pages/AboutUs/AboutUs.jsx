@@ -3,6 +3,32 @@ import HeadTitle from "../../Components/HeadTitle";
 import aboutImage from "../../assets/hero.jpg";
 import CountUp from "react-countup";
 import { FaShoppingBag, FaTshirt, FaSmileBeam, FaAward } from "react-icons/fa";
+import { motion } from "framer-motion";
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.97,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.18,
+    },
+  },
+};
 
 const AboutUs = () => {
   const stats = [
@@ -37,40 +63,60 @@ const AboutUs = () => {
 
   return (
     <section>
-            <title>ThreadMart | About Us</title>
+      <title>ThreadMart | About Us</title>
       <HeadTitle className={"!mt-0 !mb-5"}>About Us</HeadTitle>
-      <div className="flex flex-col items-center justify-center text-gray-300 text-center gap-5 max-w-3xl mx-auto">
-        <p className=" ">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        className="flex flex-col items-center justify-center
+    text-gray-300 text-center gap-5 max-w-3xl mx-auto"
+      >
+        <motion.p variants={fadeUp}>
           “At ThreadMart, we believe in combining craftsmanship and innovation
-          to deliver premium garments. From concept to final product, we ensure
-          every stitch reflects quality and precision. With over 500 bulk orders
-          completed for satisfied clients, we’ve built a reputation for
-          reliability and excellence in garment production.”
-        </p>
-        <img
+          to deliver premium garments...”
+        </motion.p>
+
+        <motion.img
+          variants={fadeUp}
           src={aboutImage}
           alt=""
-          className="w-full object-cover rounded-2xl border-primary border-4 h-80"
+          className="w-full object-cover rounded-2xl
+      border-primary border-4 h-80"
         />
-        <p>
-          “We collaborate closely with our clients, understanding their vision
-          and business needs. Our mission is to provide high-quality garments on
-          time, while keeping the process transparent and efficient. Let’s
-          create garments that leave a lasting impression together!”
-        </p>
 
-        <button className="btn btn-primary btn-outline">
+        <motion.p variants={fadeUp}>
+          “We collaborate closely with our clients...”
+        </motion.p>
+
+        <motion.button
+          variants={fadeUp}
+          className="btn btn-primary btn-outline"
+        >
           Explore Collection
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       {/* countup */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center mt-16">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        className="flex flex-col sm:flex-row gap-4 items-center mt-16"
+      >
         <div className="flex-1 ">
           <p className="text-lg">A Modern Garment Manufacturing Partner</p>
-          <h2 className="text-xl md:text-4xl text-primary mb-4 mt-1">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-xl md:text-4xl text-primary mb-4 mt-1"
+          >
             You bring the vision, and we craft it with precision.
-          </h2>
+          </motion.h2>
           <p className="text-sm text-gray-400">
             We are a trusted garment manufacturing and export company delivering
             high-quality apparel to global brands. From fabric sourcing to final
@@ -102,7 +148,7 @@ const AboutUs = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
