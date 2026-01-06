@@ -1,12 +1,24 @@
 import React from "react";
 import HeadTitle from "../../../Components/HeadTitle";
-
+import { motion } from "framer-motion";
 const NewsLetter = () => {
   return (
-    <section className="px-6 py-16 bg-primary/10 mt-16 rounded-2xl text-center">
-      <h2 className="text-3xl md:text-5xl font-semibold text-white mb-2">
+    <motion.section
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+      className="px-6 py-16 bg-primary/10 mt-16 rounded-2xl text-center"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="text-3xl md:text-5xl font-semibold text-white mb-2"
+      >
         Subscribe to Our Newsletter
-      </h2>
+      </motion.h2>
 
       <p className="text-gray-400 max-w-2xl mx-auto mb-5 text-lg">
         Get updates about new collections, offers, and fashion trends directly
@@ -38,7 +50,7 @@ const NewsLetter = () => {
       <p className="text-gray-500 text-sm mt-6">
         We respect your privacy. No spam, ever.
       </p>
-    </section>
+    </motion.section>
   );
 };
 

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import HeadTitle from "../../../Components/HeadTitle";
-
+import { motion } from "framer-motion";
 const CustomerFeedback = () => {
   const testimonials = [
     {
@@ -68,7 +68,12 @@ const CustomerFeedback = () => {
     <section className="mt-10 space-y-7">
       <HeadTitle>Customer Feedback</HeadTitle>
 
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      >
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -109,7 +114,7 @@ const CustomerFeedback = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
     </section>
   );
 };

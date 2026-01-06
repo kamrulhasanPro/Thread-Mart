@@ -7,7 +7,7 @@ import Loading from "../../Components/Loading";
 import { FaArrowLeft } from "react-icons/fa";
 
 const AllProducts = () => {
-  const limit = 9;
+  const limit = 12;
   const [currentPage, setCurrentPage] = useState(0);
   const skip = currentPage * limit;
   const { data: { result: products = [], quantity } = {}, isLoading } =
@@ -27,9 +27,9 @@ const AllProducts = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {products.map((product, i) => (
+            <ProductCard key={product._id} product={product} index={i} />
           ))}
         </div>
       )}
