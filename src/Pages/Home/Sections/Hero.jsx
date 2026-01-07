@@ -7,11 +7,14 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 
 const fadeUp = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
   },
 };
 
@@ -22,14 +25,13 @@ const stagger = {
 const Hero = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row gap-5 items-center justify-between min-h-[calc(100vh-80px)]">
-      
       {/* text content */}
       <motion.div
         className="flex-1"
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
       >
         <motion.p variants={fadeUp} className="text-lg sm:text-xl mb-4">
           Trusted Bulk Garment Marketplace
@@ -61,10 +63,10 @@ const Hero = () => {
       {/* image */}
       <motion.div
         className="flex-1 grid grid-cols-2 gap-4 h-[460px]"
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
       >
         <motion.div
           variants={fadeUp}
@@ -72,8 +74,10 @@ const Hero = () => {
         >
           <img
             src={bannerImage}
+            loading="lazy"
+            decoding="async"
             alt="hero"
-            className="w-full h-full object-cover hover:scale-105 transition duration-300"
+            className="w-full h-full object-cover opacity-80 hover:opacity-100 duration-300 will-change-transform"
           />
         </motion.div>
 
