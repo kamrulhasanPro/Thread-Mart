@@ -25,7 +25,7 @@ const ContactForm = () => {
     setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.append("access_key", "a2dcdefc-a972-4c99-9e49-564717c5691d");
+    formData.append("access_key", `${import.meta.env.VITE_CONTACT_FORM_SECRETE}`);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -38,10 +38,11 @@ const ContactForm = () => {
       event.target.reset();
       setLoading(false);
     } else {
-      toast.error("Some is problem.");
+      toast.error("Something is problem.");
       setLoading(false);
     }
   };
+
   const inputBox = `w-full border px-4 py-3 rounded-md outline-none border-primary/20 focus:border-primary transition-all`;
   return (
     <motion.div
