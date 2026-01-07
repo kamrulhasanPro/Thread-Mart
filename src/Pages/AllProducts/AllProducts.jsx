@@ -5,25 +5,62 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../Hooks/axiosPublic";
 import Loading from "../../Components/Loading";
 import { FaArrowLeft } from "react-icons/fa";
+import SearchFilter from "../../Components/SearchFilter";
+import { motion } from "framer-motion";
 
 const AllProducts = () => {
   const limit = 12;
   const [currentPage, setCurrentPage] = useState(0);
   const skip = currentPage * limit;
+  const [category, setCategory] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+
+  // fetch products
   const { data: { result: products = [], quantity } = {}, isLoading } =
     useQuery({
-      queryKey: ["products", skip],
+      queryKey: ["products", skip, category, searchValue],
       queryFn: async () =>
-        (await axiosPublic(`/products?limit=${limit}&skip=${skip}`)).data,
+        (
+          await axiosPublic(
+            `/products?limit=${limit}&skip=${skip}&category=${category}&search=${searchValue}`
+          )
+        ).data,
     });
 
   const pages = Math.ceil(quantity / limit);
-  console.log(pages, currentPage);
+  console.log(products.length, quantity);
 
   return (
     <section>
       <title>ThreadMart | All Products</title>
-      <HeadTitle className={"!mt-0"}>All Products ({quantity})</HeadTitle>
+      <HeadTitle className={"!mt-0"}>All Products</HeadTitle>
+
+      {/* searching and filtering */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="flex items-center  gap-3 justify-between mb-5"
+      >
+        <p className="text-gray-400">
+          Found Products {quantity}/{products?.length}
+        </p>
+        <SearchFilter
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          filterValue={category}
+          setFilterValue={setCategory}
+        >
+          <option value="">Filter All</option>
+          <option>Shirt</option>
+          <option>Pant</option>
+          <option>Jacket</option>
+          <option>Cap</option>
+        </SearchFilter>
+      </motion.div>
+
+      {/* product */}
       {isLoading ? (
         <Loading />
       ) : (

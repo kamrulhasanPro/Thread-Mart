@@ -13,7 +13,7 @@ const SearchFilter = ({
       {/* search and filter */}
       <div className="flex gap-2">
         {/* search */}
-        <label className="input bg-black/50 w-full outline-offset-0 focus-within:outline-primary border-0 transition-all">
+        <label className="input bg-secondary/50 w-full outline-offset-0 focus-within:outline-primary border-0 transition-all">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const SearchFilter = ({
 
         {/* status */}
         <label
-          className="input bg-black/50 outline-offset-0 focus-within:outline-primary border-0 transition-all cursor-pointer pr-0"
+          className="input bg-secondary/50 outline-offset-0 focus-within:outline-primary border-0 transition-all cursor-pointer pr-0"
           htmlFor="select"
         >
           <FaFilter />
