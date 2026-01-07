@@ -18,10 +18,6 @@ const fadeUp = {
   },
 };
 
-const stagger = {
-  show: { transition: { staggerChildren: 0.15 } },
-};
-
 const Hero = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row gap-5 items-center justify-between min-h-[calc(100vh-80px)]">

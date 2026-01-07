@@ -10,6 +10,24 @@ const NewsLetter = () => {
       transition={{ delay: 0.2, duration: 0.8 }}
       className="px-6 py-16 bg-primary/10 mt-16 rounded-2xl text-center"
     >
+      {/* icon */}
+      <motion.figure
+        animate={{ y: [0, -8, 0] }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="flex items-center justify-center"
+      >
+        <img
+          width="60"
+          height="60"
+          src="https://img.icons8.com/parakeet/48/new-post.png"
+          alt="new-post"
+        />
+      </motion.figure>
+
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
