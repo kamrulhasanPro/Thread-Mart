@@ -1,8 +1,4 @@
 import React from "react";
-import MyContainer from "../../../Components/MyContainer";
-import bannerImage from "../../../assets/heroImage.jpg";
-import herosecond from "../../../assets/herosecond.jpg";
-import herofourth from "../../../assets/herofourth.jpg";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 

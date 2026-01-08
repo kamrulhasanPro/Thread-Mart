@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutImage from "../../../assets/hero.jpg";
 
 const fadeUp = {
   hidden: {
@@ -45,7 +44,7 @@ const About = () => {
 
         <motion.img
           variants={fadeUp}
-          src={aboutImage}
+          src={'https://i.postimg.cc/CxfDRkcL/hero.jpg'}
           alt=""
           className="w-full object-cover rounded-2xl
                border-primary border-4 h-80"
