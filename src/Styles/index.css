@@ -38,7 +38,7 @@ body {
   background-color: #020617;
 
   /* subtle glow layers */
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
       70% 60% at 20% 30%,
       rgba(50, 230, 226, 0.12),
       transparent 65%
@@ -47,7 +47,9 @@ body {
       60% 50% at 80% 70%,
       rgba(50, 230, 226, 0.08),
       transparent 70%
-    );
+    ); */
+
+    
 }
 
 .swiper-button-next,

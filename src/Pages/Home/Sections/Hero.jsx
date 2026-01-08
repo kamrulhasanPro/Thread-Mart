@@ -69,11 +69,9 @@ const Hero = () => {
           className="col-span-1 row-span-2 rounded-2xl overflow-hidden shadow-xl"
         >
           <img
-            src={bannerImage}
-            loading="lazy"
-            decoding="async"
+            src={"https://i.postimg.cc/2SBv1h04/hero_Image.jpg"}
             alt="hero"
-            className="w-full h-full object-cover opacity-80 hover:opacity-100 duration-300 will-change-transform"
+            className="w-full h-full object-cover opacity-80 hover:opacity-100 duration-300"
           />
         </motion.div>
 
@@ -82,7 +80,7 @@ const Hero = () => {
           className="rounded-2xl overflow-hidden shadow-lg"
         >
           <img
-            src={herosecond}
+            src={"https://i.postimg.cc/6pGR8nM2/herosecond.jpg"}
             alt="hero"
             className="w-full h-full object-cover hover:scale-105 transition duration-300"
           />
@@ -93,7 +91,7 @@ const Hero = () => {
           className="rounded-2xl overflow-hidden shadow-lg"
         >
           <img
-            src={herofourth}
+            src={"https://i.postimg.cc/QdW5F1fF/herofourth.jpg"}
             alt="hero"
             className="w-full h-full object-cover hover:scale-105 transition duration-300"
           />

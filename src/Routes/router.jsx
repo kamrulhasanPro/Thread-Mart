@@ -5,14 +5,12 @@ import Home from "../Pages/Home/Home";
 import Register from "../Pages/Auth/Register";
 import Login from "../Pages/Auth/Login";
 import AllProducts from "../Pages/AllProducts/AllProducts";
-import AboutUs from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import PrivateRoute from "./PrivateRoute";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
-import ManagerDashboardHome from "../Pages/Dashboard/Manager/MenagerDashboardHome";
 import AddProduct from "../Pages/Dashboard/Manager/AddProduct";
 import ManageProducts from "../Pages/Dashboard/Manager/ManageProducts";
 import PendingOrder from "../Pages/Dashboard/Manager/PendingOrder";
@@ -29,6 +27,7 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageAllProducts from "../Pages/Dashboard/Admin/ManageAllProducts";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -63,11 +62,7 @@ export const router = createBrowserRouter([
       {
         path: "product/:id",
         loader: ({ params }) => axiosPublic(`/product/${params.id}/specific`),
-        element: (
-          <PrivateRoute>
-            <ProductDetails />
-          </PrivateRoute>
-        ),
+        element: <ProductDetails />,
       },
       {
         path: "order-form/:id",
