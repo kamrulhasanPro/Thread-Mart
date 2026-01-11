@@ -6,6 +6,7 @@ import CustomerFeedback from "./Sections/CustomerFeedback";
 import OurTrustedBrands from "./Sections/OurTrustedBrands";
 import NewsLetter from "./Sections/Newsletter";
 import WhyChooseUs from "./Sections/WhyChooseUs";
+import FAQ from "./Sections/FAQ";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <CustomerFeedback />
       <OurTrustedBrands />
       <NewsLetter />
+      <FAQ />
     </>
   );
 };
