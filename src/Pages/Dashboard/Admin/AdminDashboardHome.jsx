@@ -11,6 +11,7 @@ import {
 } from "react-icons/go";
 import Loading from "../../../Components/share/Loading";
 import RevenueChart from "../../../Components/ReChart/RevenueChart";
+import StatusChart from "../../../Components/ReChart/StatusChart";
 
 const AdminDashboardHome = () => {
   const { role } = useRole();
@@ -68,6 +69,7 @@ const AdminDashboardHome = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
         <RevenueChart />
+        <StatusChart />
       </div>
     </>
   );

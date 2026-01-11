@@ -6,6 +6,7 @@ import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { GoPackage, GoClock, GoCheckCircle, GoRocket } from "react-icons/go";
 import Loading from "../../../Components/share/Loading";
 import RevenueChart from "../../../Components/ReChart/RevenueChart";
+import StatusChart from "../../../Components/ReChart/StatusChart";
 
 const ManagerDashboardHome = () => {
   const { role } = useRole();
@@ -64,6 +65,7 @@ const ManagerDashboardHome = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
         <RevenueChart />
+        <StatusChart />
       </div>
     </>
   );

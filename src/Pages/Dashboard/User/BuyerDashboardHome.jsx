@@ -5,6 +5,7 @@ import useRole from "../../../Hooks/useRole";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { GoChecklist, GoClock, GoCheckCircle, GoXCircle } from "react-icons/go";
 import Loading from "../../../Components/share/Loading";
+import StatusChart from "../../../Components/ReChart/StatusChart";
 
 const BuyerDashboardHome = () => {
   const { role } = useRole();
@@ -48,18 +49,24 @@ const BuyerDashboardHome = () => {
 
   console.log(stats);
   return (
-    <div className="grid  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5  ">
-      {/* stats show */}
-      {buyerStats.map((item, i) => (
-        <ViewCard
-          key={i}
-          label={item.label}
-          Icon={item.icon}
-          value={item.value}
-          color={item.color}
-        />
-      ))}
-    </div>
+    <>
+      <div className="grid  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5  ">
+        {/* stats show */}
+        {buyerStats.map((item, i) => (
+          <ViewCard
+            key={i}
+            label={item.label}
+            Icon={item.icon}
+            value={item.value}
+            color={item.color}
+          />
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+        {/* <RevenueChart /> */}
+        <StatusChart />
+      </div>
+    </>
   );
 };
 

@@ -42,9 +42,10 @@ const AllOrders = () => {
           filterValue={orderStatus}
           setFilterValue={setOrderStatus}
         >
-          <option value="">Filter Status</option>
+          <option value="">Filter All</option>
           <option value={"pending"}>Pending</option>
           <option value={"approved"}>Approved</option>
+          <option value={"Delivered"}>Delivered</option>
           <option value={"rejected"}>Rejected</option>
         </SearchFilter>
       </div>
