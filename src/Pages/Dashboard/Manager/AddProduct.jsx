@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "../../../Components/share/HeadTitle";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import axios from "axios";
 import { useAuth } from "../../../Hooks/useAuth";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
@@ -19,6 +19,7 @@ const AddProduct = () => {
     formState: { errors },
     handleSubmit,
     reset,
+    control,
   } = useForm();
 
   const inputBox = (condition) =>
@@ -85,6 +86,12 @@ const AddProduct = () => {
       toast.error(error.code);
     }
   };
+
+  const TotalQuantity = useWatch({
+    name: "availableQuantity",
+    control,
+    // defaultValue: availableQuantity,
+  });
 
   return (
     <section>
@@ -216,6 +223,10 @@ const AddProduct = () => {
                     min: {
                       value: 1,
                       message: "Minimum Order must be at least 1",
+                    },
+                    max: {
+                      value: TotalQuantity,
+                      message: `Maximum Order must be at least ${TotalQuantity}`,
                     },
                   })}
                 />

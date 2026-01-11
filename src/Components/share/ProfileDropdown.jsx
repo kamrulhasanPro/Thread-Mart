@@ -26,7 +26,7 @@ const ProfileDropdown = () => {
           className="btn btn-ghost btn-circle avatar"
         >
           <div className="w-10 rounded-full">
-            <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+            <img alt="photo" src={user.photoURL} />
           </div>
         </div>
         <div
@@ -35,8 +35,12 @@ const ProfileDropdown = () => {
         >
           {/* profile info */}
           <div className="flex items-center gap-2">
-            <figure className="w-10 h-10 overflow-hidden rounded-full">
-              <img src={user?.photoURL} alt="photo" />
+            <figure className="w-10 btn btn-ghost btn-circle avatar rounded-full overflow-hidden">
+              <img
+                src={user?.photoURL}
+                alt="photo"
+                className="object-cover object-center"
+              />
             </figure>
             <div className="leading-tight">
               <h2>{user?.displayName}</h2>
@@ -51,7 +55,7 @@ const ProfileDropdown = () => {
             to={"/dashboard/profile"}
             className="flex items-center p-1.5 gap-1.5 hover:bg-gray-700 rounded-lg duration-300"
           >
-            <FaRegUser size={20}/> Profile
+            <FaRegUser size={20} /> Profile
           </Link>
 
           {/* dashboard */}
@@ -59,7 +63,7 @@ const ProfileDropdown = () => {
             to={"/dashboard"}
             className="flex items-center p-1.5 gap-1.5 hover:bg-gray-700 rounded-lg duration-300"
           >
-            <LuLayoutDashboard size={20}/> Dashboard
+            <LuLayoutDashboard size={20} /> Dashboard
           </Link>
 
           {/* help center */}
@@ -67,14 +71,14 @@ const ProfileDropdown = () => {
             to={"/dashboard"}
             className="flex items-center p-1.5 gap-1.5 hover:bg-gray-700 rounded-lg duration-300"
           >
-            <MdOutlineContactSupport size={20}/> Help Center
+            <MdOutlineContactSupport size={20} /> Help Center
           </Link>
           <hr className="border-gray-600 my-2" />
           <button
             onClick={handleLogout}
             className="flex items-center p-1.5 gap-1.5 hover:bg-red-500 rounded-lg duration-300 w-full cursor-pointer"
           >
-            <MdOutlineLogout size={20}/> Logout
+            <MdOutlineLogout size={20} /> Logout
           </button>
         </div>
       </div>

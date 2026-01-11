@@ -6,6 +6,7 @@ import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { GoChecklist, GoClock, GoCheckCircle, GoXCircle } from "react-icons/go";
 import Loading from "../../../Components/share/Loading";
 import StatusChart from "../../../Components/ReChart/StatusChart";
+import RevenueChart from "../../../Components/ReChart/RevenueChart";
 
 const BuyerDashboardHome = () => {
   const { role } = useRole();
@@ -63,7 +64,7 @@ const BuyerDashboardHome = () => {
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-        {/* <RevenueChart /> */}
+        <RevenueChart />
         <StatusChart />
       </div>
     </>

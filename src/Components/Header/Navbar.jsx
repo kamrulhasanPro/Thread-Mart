@@ -15,7 +15,6 @@ const Navbar = () => {
       <MyLink to={"/all-products"}>All Items</MyLink>
       <MyLink to={"/about-us"}>About Us</MyLink>
       <MyLink to={"/contact"}>Contact</MyLink>
-      {user && <MyLink to={"/dashboard"}>Dashboard</MyLink>}
     </>
   );
 

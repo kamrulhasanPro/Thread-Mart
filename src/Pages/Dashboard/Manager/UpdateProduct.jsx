@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "../../../Components/share/HeadTitle";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import axios from "axios";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
@@ -30,6 +30,7 @@ const UpdateProduct = () => {
     register,
     formState: { errors },
     handleSubmit,
+    control,
   } = useForm();
 
   const inputBox = (condition) =>
@@ -94,6 +95,11 @@ const UpdateProduct = () => {
     }
   };
 
+  const TotalQuantity = useWatch({
+    name: "availableQuantity",
+    control,
+    defaultValue: availableQuantity,
+  });
   return (
     <section>
       <title>ThreadMart Dashboard | Update Product</title>
@@ -198,7 +204,7 @@ const UpdateProduct = () => {
               <div className="flex gap-2 flex-col sm:flex-row">
                 <input
                   type="number"
-                  defaultValue={availableQuantity}
+                  defaultValue={TotalQuantity}
                   placeholder="Available Quantity"
                   className={inputBox(errors.availableQuantity)}
                   {...register("availableQuantity", {
@@ -224,6 +230,10 @@ const UpdateProduct = () => {
                     min: {
                       value: 1,
                       message: "Minimum Order must be at least 1",
+                    },
+                    max: {
+                      value: TotalQuantity,
+                      message: `Maximum Order must be at least ${TotalQuantity}`,
                     },
                   })}
                 />
