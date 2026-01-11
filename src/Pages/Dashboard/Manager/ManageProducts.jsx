@@ -9,6 +9,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import ConfirmModal from "../../../Components/share/ConfirmModal";
 import { Link } from "react-router";
 import SearchFilter from "../../../Components/share/SearchFilter";
+import { BiSolidMessageSquareAdd } from "react-icons/bi";
 
 const ManageProducts = () => {
   const [open, setOpen] = useState(false);
@@ -49,7 +50,7 @@ const ManageProducts = () => {
       <title>ThreadMart Dashboard | Manage Products</title>
 
       <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
-        <DashboardTitle>Manage Products ({products.length})</DashboardTitle>
+        <DashboardTitle>Manage Products </DashboardTitle>
 
         {/* search & filter */}
         <SearchFilter
@@ -64,6 +65,20 @@ const ManageProducts = () => {
           <option>Jacket</option>
           <option>Cap</option>
         </SearchFilter>
+      </div>
+
+      {/* add product */}
+      <div className="mb-4 flex items-center justify-between gap-2 ">
+        <div>
+          <p className="text-gray-400">Total Product: {products?.length}</p>
+        </div>
+        <Link
+          to={"/dashboard/add-product"}
+          className="btn btn-primary border-none bg-primary/50 hover:bg-primary/80 text-white"
+        >
+          <BiSolidMessageSquareAdd size={24}/>
+          <span className="hidden sm:inline">Add Product</span>
+        </Link>
       </div>
 
       <div>

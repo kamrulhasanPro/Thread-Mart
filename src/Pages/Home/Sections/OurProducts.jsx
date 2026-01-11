@@ -9,7 +9,7 @@ const OurProducts = () => {
   const { data: { result: products = [] } = {}, isLoading } = useQuery({
     queryKey: ["our-products"],
     queryFn: async () =>
-      (await axiosPublic("/products?showOnHomePage=true&limit=6")).data,
+      (await axiosPublic("/products?showOnHomePage=true&limit=8")).data,
   });
 
   return (

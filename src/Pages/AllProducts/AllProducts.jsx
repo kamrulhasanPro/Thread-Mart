@@ -30,6 +30,19 @@ const AllProducts = () => {
   const pages = Math.ceil(quantity / limit);
   console.log(products.length, quantity);
 
+  // animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  
   return (
     <section>
       <title>ThreadMart | All Products</title>
@@ -64,11 +77,13 @@ const AllProducts = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <motion.div 
+        variants={containerVariants}
+        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {products.map((product, i) => (
             <ProductCard key={product._id} product={product} index={i} />
           ))}
-        </div>
+        </motion.div>
       )}
 
       {/* pagination */}

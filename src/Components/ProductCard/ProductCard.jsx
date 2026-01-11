@@ -6,27 +6,25 @@ const ProductCard = ({ product, index }) => {
   const { productName, description, _id, price, images } = product;
   const shortDescription =
     description.length > 50 ? description.slice(0, 50) + "..." : description;
+
+  // card animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
+    },
+  };
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 40,
-        scale: 0.96,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.05,
-      }}
-      transition={{
-        duration: 1,
-        ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.2,
-      }}
+      variants={cardVariants}
+      custom={index}
       className="bg-[#0f172a]/50 hover:bg-[#111c35] backdrop-blur-md text-secondary-content hover:-translate-y-1 border-2 border-transparent hover:border-primary/20 duration-300 rounded-t-2xl   hover:shadow-[0_25px_60px_rgba(0,0,0,0.7),0_0_30px_rgba(50,230,226,0.35)] flex flex-col group
 "
     >

@@ -39,15 +39,18 @@ const FAQ = () => {
     <section>
       <HeadTitle>FAQ</HeadTitle>
       <div className="space-y-2">
-        {faqs.map((q) => (
+        {faqs.map((q, i) => (
           <div
+            key={i}
             tabIndex={0}
             className="collapse collapse-arrow bg-primary/5 border-secondary duration-300 border"
           >
             <div className="collapse-title font-semibold after:start-5 after:end-auto pe-4 ps-12">
               {q.question}
             </div>
-            <div className="collapse-content text-sm text-gray-400">{q.answer}</div>
+            <div className="collapse-content text-sm text-gray-400">
+              {q.answer}
+            </div>
           </div>
         ))}
       </div>

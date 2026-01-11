@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../../Hooks/useAuth";
-import { toast } from "react-toastify";
-import { axiosPublic } from "../../Hooks/axiosPublic";
 import Logo from "../share/Logo";
 import MyLink from "./MyLink";
 import MyContainer from "../share/MyContainer";
+import ProfileDropdown from "../share/ProfileDropdown";
 
 const Navbar = () => {
-  const { user, signOutUser } = useAuth();
+  const { user } = useAuth();
   const [scrollY, setScrolled] = useState(false);
   const navList = (
     <>
@@ -19,14 +18,6 @@ const Navbar = () => {
       {user && <MyLink to={"/dashboard"}>Dashboard</MyLink>}
     </>
   );
-
-  // logout
-  const handleLogout = () => {
-    signOutUser().then(() => {
-      axiosPublic.post("/logout").then((res) => console.log(res.data));
-      toast.info("You are logout");
-    });
-  };
 
   // scroll header bg color
   useEffect(() => {
@@ -86,39 +77,7 @@ const Navbar = () => {
 
           {/* profile or login button */}
           {user ? (
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user.photoURL}
-                  />
-                </div>
-              </div>
-              <ul
-                tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <Link to={"/dashboard/profile"}>Profile</Link>
-                </li>
-                <li>
-                  <Link to={"/dashboard"}>Dashboard</Link>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className="btn btn-error text-lg text-white mt-4"
-                  >
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
+            <ProfileDropdown />
           ) : (
             <div className="space-x-2">
               <Link to={"/login"} className="rounded_btn_outline">
