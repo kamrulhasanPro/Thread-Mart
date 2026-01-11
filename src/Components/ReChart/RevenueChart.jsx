@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import Loading from "../share/Loading";
 
-const RevenueChart = () => {
+const RevenueChart = ({ buyer = false }) => {
   const { user } = useAuth();
   const { data: orderStats = [], isLoading } = useQuery({
     queryKey: ["revenue-stats", user?.email],
@@ -31,12 +31,14 @@ const RevenueChart = () => {
   if (isLoading) {
     return <Loading />;
   }
-  
+
   return (
     <div className="bg-secondary rounded-xl p-6 shadow">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Revenue & Orders</h3>
+        <h3 className="text-lg font-semibold">
+          {buyer ? "My Spending" : "Revenue"} & Orders
+        </h3>
       </div>
 
       {/* Summary */}
@@ -46,7 +48,9 @@ const RevenueChart = () => {
           <h2 className="text-2xl font-bold">{totals?.totalOrders}</h2>
         </div>
         <div>
-          <p className="text-sm text-gray-400">Revenue</p>
+          <p className="text-sm text-gray-400">
+            {buyer ? "Spending" : "Revenue"}
+          </p>
           <h2 className="text-2xl font-bold">৳ {totals?.revenue}</h2>
         </div>
       </div>

@@ -34,7 +34,7 @@ const ProfileDropdown = () => {
           className="dropdown-content bg-secondary rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
           {/* profile info */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 overflow-hidden">
             <figure className="w-10 btn btn-ghost btn-circle avatar rounded-full overflow-hidden">
               <img
                 src={user?.photoURL}
@@ -44,7 +44,7 @@ const ProfileDropdown = () => {
             </figure>
             <div className="leading-tight">
               <h2>{user?.displayName}</h2>
-              <p className="text-sm text-gray-400">{user?.email}</p>
+              <p className="text-sm text-gray-400 text-wrap">{user?.email}</p>
             </div>
           </div>
           <hr className="border-gray-600 my-2" />
