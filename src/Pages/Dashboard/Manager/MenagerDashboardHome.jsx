@@ -5,6 +5,7 @@ import useRole from "../../../Hooks/useRole";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { GoPackage, GoClock, GoCheckCircle, GoRocket } from "react-icons/go";
 import Loading from "../../../Components/share/Loading";
+import RevenueChart from "../../../Components/ReChart/RevenueChart";
 
 const ManagerDashboardHome = () => {
   const { role } = useRole();
@@ -48,18 +49,23 @@ const ManagerDashboardHome = () => {
 
   console.log(stats);
   return (
-    <div className="grid  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5  ">
-      {/* stats show */}
-      {managerStats.map((item, i) => (
-        <ViewCard
-        key={i}
-          label={item.label}
-          Icon={item.icon}
-          value={item.value}
-          color={item.color}
-        />
-      ))}
-    </div>
+    <>
+      <div className="grid  grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5  ">
+        {/* stats show */}
+        {managerStats.map((item, i) => (
+          <ViewCard
+            key={i}
+            label={item.label}
+            Icon={item.icon}
+            value={item.value}
+            color={item.color}
+          />
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+        <RevenueChart />
+      </div>
+    </>
   );
 };
 
