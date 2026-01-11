@@ -19,18 +19,7 @@ const StatusChart = () => {
     "#f87171", // rejected
   ];
 
-  const ALL_STATUSES = ["pending", "approved", "Delivered", "rejected"];
-
-  const data = ALL_STATUSES.map((status) => {
-    const found = orderStatus.find((d) => d.status === status);
-    console.log(found);
-    return {
-      status,
-      orders: found ? found?.orders : 0,
-    };
-  });
-
-  console.log(data);
+  console.log(orderStatus);
 
   if (isLoading) {
     return <Loading />;
@@ -48,14 +37,14 @@ const StatusChart = () => {
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
-              data={data}
+              data={orderStatus}
               dataKey="orders"
               nameKey="status"
               innerRadius={60}
               outerRadius={90}
               paddingAngle={3}
             >
-              {data.map((_, index) => (
+              {orderStatus.map((_, index) => (
                 <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
@@ -75,7 +64,7 @@ const StatusChart = () => {
       </div>
       {/* Legend */}
       <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
-        {data.map((item, index) => (
+        {orderStatus.map((item, index) => (
           <div key={item._id} className="flex items-center gap-2">
             <span
               className="w-3 h-3 rounded-full"
