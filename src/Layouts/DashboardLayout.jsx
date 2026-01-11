@@ -8,7 +8,7 @@ import { BiTask } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { LuLogOut } from "react-icons/lu";
 import { Outlet, useNavigate } from "react-router";
-import Logo from "../Components/Logo";
+import Logo from "../Components/share/Logo";
 import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
 import { useAuth } from "../Hooks/useAuth";
 import { toast } from "react-toastify";

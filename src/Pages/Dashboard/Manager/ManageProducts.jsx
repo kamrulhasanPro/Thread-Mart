@@ -3,12 +3,12 @@ import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useAuth } from "../../../Hooks/useAuth";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
-import ConfirmModal from "../../../Components/ConfirmModal";
+import ConfirmModal from "../../../Components/share/ConfirmModal";
 import { Link } from "react-router";
-import SearchFilter from "../../../Components/SearchFilter";
+import SearchFilter from "../../../Components/share/SearchFilter";
 
 const ManageProducts = () => {
   const [open, setOpen] = useState(false);

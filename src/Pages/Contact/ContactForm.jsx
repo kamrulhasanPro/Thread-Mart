@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import Loading from "../../Components/Loading";
+import Loading from "../../Components/share/Loading";
 import { motion } from "framer-motion";
 const fadeUp = {
   hidden: {

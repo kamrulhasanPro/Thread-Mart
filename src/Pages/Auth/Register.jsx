@@ -1,5 +1,5 @@
 import React from "react";
-import MyContainer from "../../Components/MyContainer";
+import MyContainer from "../../Components/share/MyContainer";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";

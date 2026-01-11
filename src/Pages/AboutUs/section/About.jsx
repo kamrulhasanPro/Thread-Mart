@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const fadeUp = {
   hidden: {
@@ -44,7 +45,7 @@ const About = () => {
 
         <motion.img
           variants={fadeUp}
-          src={'https://i.postimg.cc/CxfDRkcL/hero.jpg'}
+          src={"https://i.postimg.cc/CxfDRkcL/hero.jpg"}
           alt=""
           className="w-full object-cover rounded-2xl
                border-primary border-4 h-80"
@@ -54,12 +55,9 @@ const About = () => {
           “We collaborate closely with our clients...”
         </motion.p>
 
-        <motion.button
-          variants={fadeUp}
-          className="btn btn-primary btn-outline"
-        >
+        <Link to={"/all-products"} className="btn btn-primary btn-outline">
           Explore Collection
-        </motion.button>
+        </Link>
       </motion.div>
     </>
   );

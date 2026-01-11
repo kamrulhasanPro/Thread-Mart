@@ -7,7 +7,7 @@ import {
   MdPayment,
   MdHistory,
 } from "react-icons/md";
-import HeadTitle from "../../../Components/HeadTitle";
+import HeadTitle from "../../../Components/share/HeadTitle";
 import { motion } from "framer-motion";
 const containerVariants = {
   hidden: {},

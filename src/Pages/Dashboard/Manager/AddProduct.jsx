@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import HeadTitle from "../../../Components/HeadTitle";
+import HeadTitle from "../../../Components/share/HeadTitle";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useAuth } from "../../../Hooks/useAuth";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 
 const AddProduct = () => {

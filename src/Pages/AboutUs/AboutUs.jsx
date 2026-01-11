@@ -1,5 +1,5 @@
 import React from "react";
-import HeadTitle from "../../Components/HeadTitle";
+import HeadTitle from "../../Components/share/HeadTitle";
 
 import Counter from "./section/Counter";
 import About from "./section/About";

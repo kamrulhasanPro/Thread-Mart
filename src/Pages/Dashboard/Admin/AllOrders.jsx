@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useAuth } from "../../../Hooks/useAuth";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import { FaEye, FaFilter } from "react-icons/fa";
 import { Link } from "react-router";
-import SearchFilter from "../../../Components/SearchFilter";
+import SearchFilter from "../../../Components/share/SearchFilter";
 
 const AllOrders = () => {
   const { user } = useAuth();

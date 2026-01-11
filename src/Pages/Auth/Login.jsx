@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MyContainer from "../../Components/MyContainer";
 import { FaUser } from "react-icons/fa";
 import { MdAdminPanelSettings, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
@@ -9,6 +8,7 @@ import { useAuth } from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { axiosPublic } from "../../Hooks/axiosPublic";
+import MyContainer from "../../Components/share/MyContainer";
 
 const Login = () => {
   const { loginUser, googleLoginUser } = useAuth();

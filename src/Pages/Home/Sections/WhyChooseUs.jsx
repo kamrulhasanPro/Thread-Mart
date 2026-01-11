@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import HeadTitle from "../../../Components/HeadTitle";
+import HeadTitle from "../../../Components/share/HeadTitle";
 import { FaTshirt, FaTags, FaTruck, FaHeadset } from "react-icons/fa";
 
 const WhyChooseUs = () => {

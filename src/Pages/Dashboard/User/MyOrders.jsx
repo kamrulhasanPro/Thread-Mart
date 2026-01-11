@@ -2,13 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useRef, useState } from "react";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useAuth } from "../../../Hooks/useAuth";
-import ConfirmModal from "../../../Components/ConfirmModal";
+import ConfirmModal from "../../../Components/share/ConfirmModal";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import { FaEye, FaTimes } from "react-icons/fa";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
-import ReuseableModal from "../../../Components/ReuseableModal";
+import ReuseableModal from "../../../Components/share/ReuseableModal";
 import { MdDateRange, MdLocationPin } from "react-icons/md";
 
 const MyOrders = () => {

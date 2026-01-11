@@ -1,4 +1,4 @@
-import HeadTitle from "../../Components/HeadTitle";
+import HeadTitle from "../../Components/share/HeadTitle";
 import { motion } from "framer-motion";
 import { FiMail, FiPhone } from "react-icons/fi";
 import {

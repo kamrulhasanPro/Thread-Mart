@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 
 const MyProfile = () => {
   const { user, signOutUser } = useAuth();

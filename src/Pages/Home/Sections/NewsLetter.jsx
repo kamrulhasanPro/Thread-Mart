@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import HeadTitle from "../../../Components/HeadTitle";
+import HeadTitle from "../../../Components/share/HeadTitle";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 const NewsLetter = () => {
   const [loading, setLoading] = useState(false);
 

@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useRole from "../../../Hooks/useRole";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { GoPackage, GoClock, GoCheckCircle, GoRocket } from "react-icons/go";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 
 const ManagerDashboardHome = () => {
   const { role } = useRole();

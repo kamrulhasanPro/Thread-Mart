@@ -1,7 +1,7 @@
 import React from "react";
-import MyContainer from "../MyContainer";
-import Logo from "../Logo";
+import Logo from "../share/Logo";
 import { Link } from "react-router";
+import MyContainer from "../share/MyContainer";
 
 const Footer = () => {
   return (

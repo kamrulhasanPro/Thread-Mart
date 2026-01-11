@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams, Link } from "react-router";
 import { axiosPublic } from "../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
-import Loading from "../../Components/Loading";
+import Loading from "../../Components/share/Loading";
 import { FaCheckCircle, FaHome, FaShoppingBag } from "react-icons/fa";
 
 const PaymentSuccess = () => {

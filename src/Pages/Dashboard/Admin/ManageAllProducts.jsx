@@ -3,10 +3,10 @@ import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useAuth } from "../../../Hooks/useAuth";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
-import ConfirmModal from "../../../Components/ConfirmModal";
+import ConfirmModal from "../../../Components/share/ConfirmModal";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 

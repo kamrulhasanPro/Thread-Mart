@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import HeadTitle from "../../Components/HeadTitle";
+import HeadTitle from "../../Components/share/HeadTitle";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../Hooks/axiosPublic";
-import Loading from "../../Components/Loading";
+import Loading from "../../Components/share/Loading";
 import { FaArrowLeft } from "react-icons/fa";
-import SearchFilter from "../../Components/SearchFilter";
+import SearchFilter from "../../Components/share/SearchFilter";
 import { motion } from "framer-motion";
 
 const AllProducts = () => {

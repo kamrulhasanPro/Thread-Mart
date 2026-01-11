@@ -9,7 +9,7 @@ import {
   GoPackage,
   GoChecklist,
 } from "react-icons/go";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 
 const AdminDashboardHome = () => {
   const { role } = useRole();

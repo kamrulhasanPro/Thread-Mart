@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
-import Loading from "../../../Components/Loading";
+import Loading from "../../../Components/share/Loading";
 import { MdEdit } from "react-icons/md";
-import ReuseableModal from "../../../Components/ReuseableModal";
+import ReuseableModal from "../../../Components/share/ReuseableModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import SearchFilter from "../../../Components/SearchFilter";
+import SearchFilter from "../../../Components/share/SearchFilter";
 
 const ManageUsers = () => {
   const updateStatusRef = useRef(null);

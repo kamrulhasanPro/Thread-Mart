@@ -1,6 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import HeadTitle from "../../../Components/HeadTitle";
+import HeadTitle from "../../../Components/share/HeadTitle";
 import adidas from "../../../assets/brands/adidas.png";
 import amazon from "../../../assets/brands/amazon.png";
 import daraz from "../../../assets/brands/daraz.png";
@@ -27,7 +27,7 @@ const OurTrustedBrands = () => {
     amazon_vector,
     start_people,
   ];
-  
+
   return (
     <section>
       <HeadTitle>Our Trusted Brands</HeadTitle>

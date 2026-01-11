@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../Hooks/useAuth";
-import Loading from "../Components/Loading";
+import Loading from "../Components/share/Loading";
 import { Navigate, useLocation } from "react-router";
 import { axiosPublic } from "../Hooks/axiosPublic";
 import useRole from "../Hooks/useRole";
-import Forbidden from "../Components/Forbidden";
+import Forbidden from "../Components/share/Forbidden";
 
 const RoleRoute = ({ verifyRol, children }) => {
   const { user, loader, setLoader } = useAuth();

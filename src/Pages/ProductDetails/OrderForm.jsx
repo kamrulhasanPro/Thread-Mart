@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import HeadTitle from "../../Components/HeadTitle";
+import HeadTitle from "../../Components/share/HeadTitle";
 import { useForm, useWatch } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
 import { useLoaderData, useNavigate } from "react-router";
-import Loading from "../../Components/Loading";
+import Loading from "../../Components/share/Loading";
 import { axiosPublic } from "../../Hooks/axiosPublic";
 import { toast, ToastContainer } from "react-toastify";
 

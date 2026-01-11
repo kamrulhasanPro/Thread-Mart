@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import MyLink from "../MyLink";
-import MyContainer from "../MyContainer";
 import { Link } from "react-router";
 import { useAuth } from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { axiosPublic } from "../../Hooks/axiosPublic";
-import Logo from "../Logo";
+import Logo from "../share/Logo";
+import MyLink from "./MyLink";
+import MyContainer from "../share/MyContainer";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();

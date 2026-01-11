@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../Hooks/useAuth";
-import Loading from "../Components/Loading";
+import Loading from "../Components/share/Loading";
 import { Navigate, useLocation } from "react-router";
 import { axiosPublic } from "../Hooks/axiosPublic";
 
