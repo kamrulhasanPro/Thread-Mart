@@ -90,9 +90,13 @@ const ProductDetails = () => {
             <h1 className="text-3xl text-primary">{productName}</h1>
 
             {/* description */}
-            <p className="text-gray-200 mt-4 whitespace-break-spaces text-sm mb-2">
+            {/* <p className="text-gray-200 mt-4 whitespace-break-spaces text-sm mb-2">
               {description}
-            </p>
+            </p> */}
+            <div
+              className="prose prose-ul:list-disc prose-ol:list-decimal max-w-none text-gray-200 mt-4 whitespace-break-spaces text-sm mb-2"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
 
             {/* category */}
             <p>

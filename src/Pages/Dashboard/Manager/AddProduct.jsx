@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "../../../Components/share/HeadTitle";
-import { useForm, useWatch } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import axios from "axios";
 import { useAuth } from "../../../Hooks/useAuth";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
@@ -8,12 +8,14 @@ import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../../../Components/share/Loading";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
+import RichTextEditor from "../../../Components/share/RichTextEditor";
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [filesValue, setFilesValue] = useState([]);
   const [previewImg, setPreviewImag] = useState([]);
+  const [content, setContent] = useState("");
   const {
     register,
     formState: { errors },
@@ -90,8 +92,13 @@ const AddProduct = () => {
   const TotalQuantity = useWatch({
     name: "availableQuantity",
     control,
-    // defaultValue: availableQuantity,
   });
+  const editContent = useWatch({
+    name: "description",
+    control,
+  });
+
+  console.log(editContent);
 
   return (
     <section>
@@ -118,14 +125,23 @@ const AddProduct = () => {
                 </p>
               )}
 
-              <textarea
-                placeholder="Product Description"
-                rows="5"
-                className={inputBox(errors.description)}
-                {...register("description", {
-                  required: "Enter Product Description",
-                })}
-              ></textarea>
+              <Controller
+                name="description"
+                control={control}
+                rules={{
+                  validate: (value) =>
+                    value && value.replace(/<[^>]*>/g, "").trim().length > 0
+                      ? true
+                      : "Enter Product Description",
+                }}
+                render={({ field }) => (
+                  <RichTextEditor
+                    condition={errors.description}
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
               {errors.description && (
                 <p className="text-red-400 text-sm">
                   {errors.description.message}
@@ -197,42 +213,47 @@ const AddProduct = () => {
                 <p className="text-red-400 text-sm">{errors.price.message}</p>
               )}
               <div className="flex gap-2 flex-col sm:flex-row">
-                <input
-                  type="number"
-                  placeholder="Available Quantity"
-                  className={inputBox(errors.availableQuantity)}
-                  {...register("availableQuantity", {
-                    required: "Enter product quantity",
-                    min: {
-                      value: 0,
-                      message: "Quantity cannot be negative",
-                    },
-                  })}
-                />
-                {errors.availableQuantity && (
-                  <p className="text-red-400 text-sm">
-                    {errors.availableQuantity.message}
-                  </p>
-                )}
-                <input
-                  type="number"
-                  placeholder="Minimum Order"
-                  className={inputBox(errors.moq)}
-                  {...register("moq", {
-                    required: "Enter minium order quantity",
-                    min: {
-                      value: 1,
-                      message: "Minimum Order must be at least 1",
-                    },
-                    max: {
-                      value: TotalQuantity,
-                      message: `Maximum Order must be at least ${TotalQuantity}`,
-                    },
-                  })}
-                />
-                {errors.moq && (
-                  <p className="text-red-400 text-sm">{errors.moq.message}</p>
-                )}
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Available Quantity"
+                    className={inputBox(errors.availableQuantity)}
+                    {...register("availableQuantity", {
+                      required: "Enter product quantity",
+                      min: {
+                        value: 0,
+                        message: "Quantity cannot be negative",
+                      },
+                    })}
+                  />
+                  {errors.availableQuantity && (
+                    <p className="text-red-400 text-sm">
+                      {errors.availableQuantity.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Minimum Order"
+                    className={inputBox(errors.moq)}
+                    {...register("moq", {
+                      required: "Enter minium order quantity",
+                      min: {
+                        value: 1,
+                        message: "Minimum Order must be at least 1",
+                      },
+                      max: {
+                        value: TotalQuantity,
+                        message: `Maximum Order must be at least ${TotalQuantity}`,
+                      },
+                    })}
+                  />
+                  {errors.moq && (
+                    <p className="text-red-400 text-sm">{errors.moq.message}</p>
+                  )}
+                </div>
               </div>
             </div>
 
