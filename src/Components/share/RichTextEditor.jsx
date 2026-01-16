@@ -25,9 +25,7 @@ const RichTextEditor = ({ value, onChange, condition, placeholder }) => {
 
   return (
     <div
-      className={`w-full border px-4 py-3 rounded-md min-h-[120px]
-        transition-all
-        ${
+      className={`w-full border px-4 py-3 rounded-md min-h-[120px] transition-all relative z-50 ${
           condition
             ? "border-red-400 focus-within:border-red-400"
             : "border-primary/20 focus-within:border-primary"

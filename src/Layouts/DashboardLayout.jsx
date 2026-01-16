@@ -169,7 +169,7 @@ const DashboardLayout = () => {
                 <li>
                   <label
                     htmlFor="my-drawer-4"
-                    className="flex is-drawer-open:justify-end text-lg is-drawer-open:bg-gray-700 "
+                    className="flex is-drawer-open:justify-end text-lg is-drawer-open:bg-gray-700 cursor-e-resize"
                   >
                     {/* Sidebar toggle icon */}
                     <MdOutlineMenuOpen />

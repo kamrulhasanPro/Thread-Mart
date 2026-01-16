@@ -114,7 +114,7 @@ const AddProduct = () => {
           {/* parent */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* general information */}
-            <div className="boxStyle">
+            <div className="boxStyle ">
               <p>General Information</p>
               <input
                 type="text"

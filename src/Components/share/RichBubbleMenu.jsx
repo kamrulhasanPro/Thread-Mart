@@ -24,9 +24,9 @@ const RichBubbleMenu = ({ editor }) => {
   return (
     <BubbleMenu
       editor={editor}
-      tippyOptions={{ duration: 150 }}
+      tippyOptions={{ duration: 150, placement: "top-start", offset: [8, 10] }}
       shouldShow={({ editor }) => !editor.state.selection.empty}
-      className="flex gap-1 bg-secondary shadow-lg border border-base-200 rounded-md p-1 z-50"
+      className="flex gap-1 bg-secondary shadow-lg border border-base-200 rounded-md p-1 ml-16 z-[9999]"
     >
       {/* Bold */}
       <MenuButton
