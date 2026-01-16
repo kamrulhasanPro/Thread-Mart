@@ -15,22 +15,22 @@ const AllProducts = () => {
   const skip = currentPage * limit;
   const [category, setCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [sortValue, setSortValue] = useState("");
 
   // fetch products
   const { data: { result: products = [], quantity } = {}, isLoading } =
     useQuery({
-      queryKey: ["products", skip, category, searchValue],
+      queryKey: ["products", skip, category, searchValue, sortValue],
       queryFn: async () =>
         (
           await axiosPublic(
-            `/products?limit=${limit}&skip=${skip}&category=${category}&search=${searchValue}`
+            `/products?limit=${limit}&skip=${skip}&category=${category}&search=${searchValue}&sort=${sortValue}`
           )
         ).data,
     });
 
   const pages = Math.ceil(quantity / limit);
-  console.log(products.length, quantity);
-
+  console.log(sortValue);
   // animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,6 +43,37 @@ const AllProducts = () => {
     },
   };
 
+  const sorting = (
+    <form className="filter group">
+      <input
+        className="btn btn-square btn-secondary hidden  group-has-[input:checked]:inline "
+        type="reset"
+        value="×"
+        checked={sortValue === ""}
+        onClick={() => setSortValue("")}
+      />
+      <input
+        className="btn btn-secondary"
+        type="radio"
+        name="sorting"
+        aria-label="Latest"
+        value={"latest"}
+        checked={sortValue === "latest"}
+        onChange={(e) => setSortValue(e.target.value)}
+      />
+
+      <input
+        className="btn btn-secondary"
+        type="radio"
+        name="sorting"
+        aria-label="Oldest"
+        value={"oldest"}
+        checked={sortValue === "oldest"}
+        onChange={(e) => setSortValue(e.target.value)}
+      />
+    </form>
+  );
+
   return (
     <section>
       <title>ThreadMart | All Products</title>
@@ -54,23 +85,31 @@ const AllProducts = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="flex items-center  gap-3 justify-between mb-5"
+        className="flex flex-col md:flex-row md:items-center  gap-3 justify-between mb-5"
       >
-        <p className="text-gray-400">
-          Found Products {quantity}/{products?.length}
-        </p>
-        <SearchFilter
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          filterValue={category}
-          setFilterValue={setCategory}
-        >
-          <option value="">Filter All</option>
-          <option>Shirt</option>
-          <option>Pant</option>
-          <option>Jacket</option>
-          <option>Cap</option>
-        </SearchFilter>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-gray-400">
+            Products {quantity}/{products?.length}
+          </p>
+          <div className="md:hidden">{sorting}</div>
+        </div>
+
+        <div className="md:flex items-center gap-2">
+          <SearchFilter
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            filterValue={category}
+            setFilterValue={setCategory}
+          >
+            <option value="">Filter All</option>
+            <option>Shirt</option>
+            <option>Pant</option>
+            <option>Jacket</option>
+            <option>Cap</option>
+          </SearchFilter>
+
+          <div className="hidden md:block">{sorting}</div>
+        </div>
       </motion.div>
 
       {/* product */}
