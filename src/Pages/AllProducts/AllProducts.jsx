@@ -7,6 +7,7 @@ import Loading from "../../Components/share/Loading";
 import { FaArrowLeft } from "react-icons/fa";
 import SearchFilter from "../../Components/share/SearchFilter";
 import { motion } from "framer-motion";
+import ProductCardSkeleton from "../../Components/Skeletor/ProductCardSkeletor";
 
 const AllProducts = () => {
   const limit = 12;
@@ -42,7 +43,6 @@ const AllProducts = () => {
     },
   };
 
-  
   return (
     <section>
       <title>ThreadMart | All Products</title>
@@ -74,17 +74,18 @@ const AllProducts = () => {
       </motion.div>
 
       {/* product */}
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <motion.div 
+      <motion.div
         variants={containerVariants}
-        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {products.map((product, i) => (
-            <ProductCard key={product._id} product={product} index={i} />
-          ))}
-        </motion.div>
-      )}
+        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4"
+      >
+        {isLoading
+          ? Array.from({ length: 8 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))
+          : products.map((product, i) => (
+              <ProductCard key={product._id} product={product} index={i} />
+            ))}
+      </motion.div>
 
       {/* pagination */}
       <div className="flex items-center justify-between mt-5">

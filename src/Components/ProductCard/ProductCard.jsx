@@ -40,7 +40,12 @@ const ProductCard = ({ product, index }) => {
       {/* text content */}
       <div className="p-4 flex flex-col grow">
         {/* name */}
-        <h3 className="text-lg font-semibold mb-2 grow">{productName}</h3>
+        <Link
+          to={`/product/${_id}`}
+          className="text-lg font-semibold mb-2 grow"
+        >
+          {productName}
+        </Link>
 
         {/* description */}
         <p
