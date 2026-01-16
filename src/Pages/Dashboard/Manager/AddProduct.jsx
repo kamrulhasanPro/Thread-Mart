@@ -15,14 +15,17 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const [filesValue, setFilesValue] = useState([]);
   const [previewImg, setPreviewImag] = useState([]);
-  const [content, setContent] = useState("");
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
     control,
-  } = useForm();
+  } = useForm({
+    defaultValues:{
+      description: ""
+    }
+  });
 
   const inputBox = (condition) =>
     `w-full border px-4 py-3 rounded-md outline-none border-primary/20 focus:border-primary transition-all validator ${
@@ -136,6 +139,7 @@ const AddProduct = () => {
                 }}
                 render={({ field }) => (
                   <RichTextEditor
+                  placeholder={"Product Description"}
                     condition={errors.description}
                     value={field.value}
                     onChange={field.onChange}

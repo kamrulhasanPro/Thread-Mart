@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "../../../Components/share/HeadTitle";
-import { useForm, useWatch } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import axios from "axios";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../../../Components/share/Loading";
 import DashboardTitle from "../../../Components/Dashboard/DashboardTitle";
 import { useLoaderData, useNavigate } from "react-router";
+import RichTextEditor from "../../../Components/share/RichTextEditor";
 
 const UpdateProduct = () => {
   const { data: product } = useLoaderData();
@@ -126,7 +127,7 @@ const UpdateProduct = () => {
                 </p>
               )}
 
-              <textarea
+              {/* <textarea
                 placeholder="Product Description"
                 rows="5"
                 defaultValue={description}
@@ -135,6 +136,31 @@ const UpdateProduct = () => {
                   required: "Enter Product Description",
                 })}
               ></textarea>
+              {errors.description && (
+                <p className="text-red-400 text-sm">
+                  {errors.description.message}
+                </p>
+              )} */}
+
+              <Controller
+                name="description"
+                defaultValue={description}
+                control={control}
+                rules={{
+                  validate: (value) =>
+                    value && value.replace(/<[^>]*>/g, "").trim().length > 0
+                      ? true
+                      : "Update Product Description",
+                }}
+                render={({ field }) => (
+                  <RichTextEditor
+                  placeholder={'Update Description'}
+                    condition={errors.description}
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
               {errors.description && (
                 <p className="text-red-400 text-sm">
                   {errors.description.message}

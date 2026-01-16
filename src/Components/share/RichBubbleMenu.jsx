@@ -10,7 +10,7 @@ const MenuButton = ({ active, onClick, children, title }) => {
         ${
           active
             ? "bg-primary/50 text-white"
-            : "hover:bg-gray-400 text-gray-700"
+            : "hover:bg-gray-700 text-gray-200"
         }`}
     >
       {children}
@@ -26,7 +26,7 @@ const RichBubbleMenu = ({ editor }) => {
       editor={editor}
       tippyOptions={{ duration: 150 }}
       shouldShow={({ editor }) => !editor.state.selection.empty}
-      className="flex gap-1 bg-secondary shadow-lg border border-base-200 rounded-md p-1 z-[99999]"
+      className="flex gap-1 bg-secondary shadow-lg border border-base-200 rounded-md p-1 z-50"
     >
       {/* Bold */}
       <MenuButton

@@ -59,34 +59,59 @@ html {
   scroll-behavior: smooth;
 }
 
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
 .ProseMirror {
   outline: none;
-  max-height: 150px;
-  overflow-y: scroll;
+  height: 150px;
+  overflow-y: auto;
   line-height: 1.6;
 }
 
 .prose p {
-  margin: 0;          /* remove default margin */
+  margin: 0;
 }
 
-.prose > * + * {
-  margin-top: 1rem;  /* consistent spacing between blocks */
+.prose > p + p {
+  margin-top: 1rem;
 }
 
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin: 0.25rem 0;
+}
 
 .ProseMirror {
   outline: none;
   line-height: 1.6;
 }
 
-.ProseMirror h3 {
+.ProseMirror h3,
+.prose h3 {
   font-size: 1.2rem;
+  margin-bottom: 3px;
   font-weight: 600;
 }
 
-.ProseMirror h4 {
+.ProseMirror h4,
+.prose h4 {
   font-size: 1.05rem;
+  margin-bottom: 5px;
   font-weight: 500;
 }
 

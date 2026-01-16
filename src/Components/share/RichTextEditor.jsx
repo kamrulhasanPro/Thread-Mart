@@ -1,17 +1,21 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import RichBubbleMenu from "./RichBubbleMenu";
+import Placeholder from "@tiptap/extension-placeholder";
 
-const RichTextEditor = ({ value, onChange, condition }) => {
+const RichTextEditor = ({ value, onChange, condition, placeholder }) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         heading: {
-          levels: [3, 4], // description-friendly
+          levels: [3, 4],
         },
       }),
+      Placeholder.configure({
+        placeholder: placeholder,
+      }),
     ],
-    content: value || "<p></p>",
+    content: value || null,
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },

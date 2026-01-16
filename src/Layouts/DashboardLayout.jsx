@@ -112,16 +112,18 @@ const DashboardLayout = () => {
         />
         <div className="drawer-content">
           {/* Navbar */}
-          <nav className="md:hidden navbar w-full bg-secondary">
+          <nav className="md:hidden navbar w-full bg-secondary justify-between">
+            <div className="px-4 navbar-start">
+              <Logo/>
+            </div>
             <label
               htmlFor="my-drawer-4"
               aria-label="open sidebar"
-              className="btn btn-square btn-ghost"
+              className="btn btn-square btn-ghost navbar-end"
             >
               {/* Sidebar toggle icon */}
               <MdOutlineMenuOpen size={20}/>
             </label>
-            <div className="px-4">Navbar Title</div>
           </nav>
           {/* Page content here */}
           <div className="p-4 min-h-[calc(100vh-80px)]">

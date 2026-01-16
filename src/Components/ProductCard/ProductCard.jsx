@@ -43,7 +43,10 @@ const ProductCard = ({ product, index }) => {
         <h3 className="text-lg font-semibold mb-2 grow">{productName}</h3>
 
         {/* description */}
-        <p className="text-sm text-gray-400 grow">{shortDescription}</p>
+        <p
+          className="text-sm text-gray-400 grow"
+          dangerouslySetInnerHTML={{ __html: shortDescription }}
+        />
 
         {/* price */}
         <p className="text-3xl mt-3">
