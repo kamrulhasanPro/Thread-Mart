@@ -29,6 +29,7 @@ import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import HelpCenter from "../Pages/HelpCenter/HelpCenter";
+import TermsAndConditions from "../Pages/TermsAndCondition/TermsAndCondition";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "help-center",
         Component: HelpCenter,
+      },
+      {
+        path: "terms-and-condition",
+        Component: TermsAndConditions,
       },
       {
         path: "product/:id",
