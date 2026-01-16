@@ -183,14 +183,25 @@ const MyProfile = () => {
                 {editMode ? <MdClose /> : <FaRegEdit />}
               </button>
             </div>
+
+            {/* status */}
             <div className="text-gray-400 text-sm flex items-center gap-2">
-              <span
-                className={`w-3 h-3 rounded-full inline-block ${
-                  userProfile?.status === "suspend"
-                    ? "bg-red-400"
-                    : "bg-green-400"
-                }`}
-              ></span>{" "}
+              <div className="inline-grid *:[grid-area:1/1]">
+                <div
+                  className={`status animate-ping ${
+                    userProfile?.status === "suspend"
+                      ? "status-error"
+                      : "status-success"
+                  }`}
+                ></div>
+                <div
+                  className={`status ${
+                    userProfile?.status === "suspend"
+                      ? "status-error"
+                      : "status-success"
+                  }`}
+                ></div>
+              </div>{" "}
               {userProfile?.status === "suspend" ? "SUSPEND " : "ACTIVE "}
               {userProfile?.role?.toLocaleUpperCase()} ACCOUNT
             </div>

@@ -4,6 +4,7 @@ import HeadTitle from "../../../Components/share/HeadTitle";
 import { axiosPublic } from "../../../Hooks/axiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/share/Loading";
+import ProductCardSkeleton from "../../../Components/Skeletor/ProductCardSkeletor";
 
 const OurProducts = () => {
   const { data: { result: products = [] } = {}, isLoading } = useQuery({
@@ -15,15 +16,16 @@ const OurProducts = () => {
   return (
     <section className="space-y-7">
       <HeadTitle>Our Product</HeadTitle>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products.map((product, i) => (
-            <ProductCard key={product._id} product={product} index={i} />
-          ))}
-        </div>
-      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {isLoading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))
+          : products.map((product, i) => (
+              <ProductCard key={product._id} product={product} index={i} />
+            ))}
+      </div>
     </section>
   );
 };
