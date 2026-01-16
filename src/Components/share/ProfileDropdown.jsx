@@ -68,7 +68,7 @@ const ProfileDropdown = () => {
 
           {/* help center */}
           <Link
-            to={"/dashboard"}
+            to={"/help-center"}
             className="flex items-center p-1.5 gap-1.5 hover:bg-gray-700 rounded-lg duration-300"
           >
             <MdOutlineContactSupport size={20} /> Help Center

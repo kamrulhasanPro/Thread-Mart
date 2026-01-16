@@ -17,10 +17,18 @@ const Footer = () => {
         </nav>
         <nav className="flex-1">
           <h6 className="footer-title">Company</h6>
-          <Link to={'about-us'} className="link link-hover">About us</Link>
-          <Link to={'contact'} className="link link-hover">Contact</Link>
-          <Link to={''} className="link link-hover">Jobs</Link>
-          <Link to={''} className="link link-hover">Press kit</Link>
+          <Link to={"about-us"} className="link link-hover">
+            About us
+          </Link>
+          <Link to={"contact"} className="link link-hover">
+            Contact
+          </Link>
+          <Link to={"/help-center"} className="link link-hover">
+            Help Center
+          </Link>
+          <Link to={"/terms-and-condition"} className="link link-hover">
+            Terms & Condition
+          </Link>
         </nav>
         <nav className="flex-1">
           <h6 className="footer-title">Social</h6>

@@ -28,6 +28,7 @@ import ManageAllProducts from "../Pages/Dashboard/Admin/ManageAllProducts";
 import AllOrders from "../Pages/Dashboard/Admin/AllOrders";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import HelpCenter from "../Pages/HelpCenter/HelpCenter";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         Component: Contact,
+      },
+      {
+        path: "help-center",
+        Component: HelpCenter,
       },
       {
         path: "product/:id",
