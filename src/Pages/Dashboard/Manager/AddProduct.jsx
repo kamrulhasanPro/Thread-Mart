@@ -22,9 +22,9 @@ const AddProduct = () => {
     reset,
     control,
   } = useForm({
-    defaultValues:{
-      description: ""
-    }
+    defaultValues: {
+      description: "",
+    },
   });
 
   const inputBox = (condition) =>
@@ -139,7 +139,7 @@ const AddProduct = () => {
                 }}
                 render={({ field }) => (
                   <RichTextEditor
-                  placeholder={"Product Description"}
+                    placeholder={"Product Description"}
                     condition={errors.description}
                     value={field.value}
                     onChange={field.onChange}
