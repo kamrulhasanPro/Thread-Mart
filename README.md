@@ -113,7 +113,6 @@ Thread Mart works as a **middle layer** between buyers and managers, similar to 
 - Framer Motion
 - @tanstack/react-query
 - Axios
-- Stripe (Client)
 - React Icons
 - React Toastify
 - Firebase
@@ -124,7 +123,7 @@ Thread Mart works as a **middle layer** between buyers and managers, similar to 
 - Node.js
 - Express.js
 - MongoDB
-- Stripe (Server)
+- Stripe
 - JSON Web Token (JWT)
 - Cookie Parser
 - CORS
@@ -176,7 +175,6 @@ stripe
 
 ```bash
 git clone https://github.com/kamrulhasanPro/Thread-MartThread-Mart-Client.git
-
 git clone https://github.com/kamrulhasanPro/Thread-Mart-Backend
 ```
 
@@ -238,4 +236,6 @@ MERN Stack Developer
 
 ---
 
-⭐ _Thread Mart demonstrates a real-world multi-vendor garments marketplace with centralized marketing and management control._
+⭐ _Thread Mart demonstrates a real-world multi-vendor garments marketplace with centralized marketing and management control.
+Feel free to ⭐ star the repository or contribute!_
+
