@@ -25,7 +25,6 @@ const Login = () => {
 
   // login user
   const handleLogin = (data) => {
-    console.log(data);
     setLoading(true);
     loginUser(data.email, data.password)
       .then(async (res) => {
@@ -184,10 +183,7 @@ const Login = () => {
             {/* admin demo */}
             <button
               onClick={() =>
-                handleLogin({
-                  email: "tanvir121@gmail.com",
-                  password: "Tanvir",
-                })
+                toast.info("Please Contact With Owner")
               }
               className="btn btn-soft btn-accent hover:text-white"
             >
