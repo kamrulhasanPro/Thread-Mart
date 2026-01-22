@@ -130,3 +130,7 @@ html {
 .ProseMirror li {
   margin: 0.25rem 0;
 }
+
+.sortingBTN {
+  @apply btn btn-secondary border-0 bg-secondary/50 outline-offset-0 outline-1 outline-primary/10 focus-within:outline-primary
+}

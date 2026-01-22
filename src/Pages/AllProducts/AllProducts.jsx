@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import SearchFilter from "../../Components/share/SearchFilter";
 import { motion } from "framer-motion";
 import ProductCardSkeleton from "../../Components/Skeletor/ProductCardSkeletor";
+import Sorting from "../../Components/share/Sorting";
 
 const AllProducts = () => {
   const limit = 12;
@@ -24,7 +25,7 @@ const AllProducts = () => {
       queryFn: async () =>
         (
           await axiosPublic(
-            `/products?limit=${limit}&skip=${skip}&category=${category}&search=${searchValue}&sort=${sortValue}`
+            `/products?limit=${limit}&skip=${skip}&category=${category}&search=${searchValue}&sort=${sortValue}`,
           )
         ).data,
     });
@@ -43,37 +44,6 @@ const AllProducts = () => {
     },
   };
 
-  const sorting = (
-    <form className="filter group">
-      <input
-        className="btn btn-square btn-secondary hidden  group-has-[input:checked]:inline "
-        type="reset"
-        value="×"
-        checked={sortValue === ""}
-        onClick={() => setSortValue("")}
-      />
-      <input
-        className="btn btn-secondary"
-        type="radio"
-        name="sorting"
-        aria-label="Latest"
-        value={"latest"}
-        checked={sortValue === "latest"}
-        onChange={(e) => setSortValue(e.target.value)}
-      />
-
-      <input
-        className="btn btn-secondary"
-        type="radio"
-        name="sorting"
-        aria-label="Oldest"
-        value={"oldest"}
-        checked={sortValue === "oldest"}
-        onChange={(e) => setSortValue(e.target.value)}
-      />
-    </form>
-  );
-
   return (
     <section>
       <title>ThreadMart | All Products</title>
@@ -85,16 +55,18 @@ const AllProducts = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="flex flex-col md:flex-row md:items-center  gap-3 justify-between mb-5"
+        className="flex flex-col items-start mb-5 bg-primary/5 p-3 rounded-lg sm:max-w-10/12 mx-auto gap-1.5"
       >
-        <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2 w-full">
           <p className="text-gray-400">
             Products {quantity}/{products?.length}
           </p>
-          <div className="md:hidden">{sorting}</div>
+          <div className="md:hidden">
+            <Sorting sortValue={sortValue} setSortValue={setSortValue} />
+          </div>
         </div>
 
-        <div className="md:flex items-center gap-2">
+        <div className="md:flex items-center gap-2 w-full">
           <SearchFilter
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -108,7 +80,9 @@ const AllProducts = () => {
             <option>Cap</option>
           </SearchFilter>
 
-          <div className="hidden md:block">{sorting}</div>
+          <div className="hidden md:block">
+            <Sorting sortValue={sortValue} setSortValue={setSortValue} />
+          </div>
         </div>
       </motion.div>
 
