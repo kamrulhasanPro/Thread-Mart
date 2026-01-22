@@ -1,5 +1,6 @@
 import React from "react";
 import HeadTitle from "../../../Components/share/HeadTitle";
+import { motion } from "framer-motion";
 
 const FAQ = () => {
   const faqs = [
@@ -40,7 +41,11 @@ const FAQ = () => {
       <HeadTitle>FAQ</HeadTitle>
       <div className="space-y-2">
         {faqs.map((q, i) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay:0.2, duration: 0.8 }}
+            viewport={{once: true}}
             key={i}
             tabIndex={0}
             className="collapse collapse-arrow bg-primary/5 border-secondary duration-300 border"
@@ -51,7 +56,7 @@ const FAQ = () => {
             <div className="collapse-content text-sm text-gray-400">
               {q.answer}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

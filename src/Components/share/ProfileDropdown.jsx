@@ -25,7 +25,7 @@ const ProfileDropdown = () => {
           role="button"
           className="btn btn-ghost btn-circle avatar"
         >
-          <div className="w-10 rounded-full">
+          <div className="w-10 rounded-full outline-2 outline-primary outline-offset-2">
             <img alt="photo" src={user.photoURL} />
           </div>
         </div>

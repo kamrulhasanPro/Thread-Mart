@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        scrollY ? "bg-secondary/80" : "bg-transparent"
+        scrollY ? "bg-secondary/80 rounded-b-xl" : "bg-transparent"
       } backdrop-blur-lg shadow-sm `}
     >
       <MyContainer className="navbar justify-between">

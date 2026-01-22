@@ -7,18 +7,20 @@ import OurTrustedBrands from "./Sections/OurTrustedBrands";
 import NewsLetter from "./Sections/Newsletter";
 import WhyChooseUs from "./Sections/WhyChooseUs";
 import FAQ from "./Sections/FAQ";
+import FabricTimeline from "./Sections/FabricTimeline";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <OurProducts />
-      <HowItWorks />
       <WhyChooseUs />
+      <FabricTimeline/>
+      <HowItWorks />
       <CustomerFeedback />
       <OurTrustedBrands />
-      <NewsLetter />
       <FAQ />
+      <NewsLetter />
     </>
   );
 };
